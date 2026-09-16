@@ -1,0 +1,80 @@
+{
+  "github_owner": "sushazhi",
+  "keep_latest": 4,
+  "apps": [
+    {
+      "repo": "fnos-logmanager",
+      "key": "logmanager",
+      "display_name": "飞牛日志管理",
+      "desc": "飞牛日志管理工具，集中管理飞牛三方应用散落在各个文件夹的日志文件。支持统一网关接入免密登录、多标签页日志查看、实时追踪、22种通知渠道推送、自动清理策略、日志备份与归档、Docker容器日志、内核版本管理、MCP服务器等。",
+      "platform": [
+        "all"
+      ],
+      "categories": [
+        "系统工具"
+      ],
+      "os_min_version": "1.2.0401",
+      "service_port": "",
+      "maintainer": "yukihana",
+      "maintainer_url": "https://github.com/sushazhi",
+      "distributor": "yukihana",
+      "distributor_url": "https://github.com/sushazhi/fnos-logmanager",
+      "asset_name_pattern": "logmanager-{ver}.fpk",
+      "arch_suffix": {},
+      "sha256_asset": "logmanager-{ver}.fpk.sha256",
+      "run_as": "package",
+      "install_type": "",
+      "is_docker": false
+    },
+    {
+      "repo": "fnos-qbittorrent",
+      "key": "qbittorrent",
+      "display_name": "qBittorrent",
+      "desc": "功能强大的BitTorrent下载工具，支持RSS订阅、搜索引擎、速度控制、WebUI远程访问。智能适配VueTorrent与原生WebUI，内置MCP Server支持AI客户端直接管理下载任务，支持自动检测更新。",
+      "platform": [
+        "all"
+      ],
+      "categories": [
+        "影音娱乐"
+      ],
+      "os_min_version": "1.1.3104",
+      "service_port": "",
+      "maintainer": "qBittorrent",
+      "maintainer_url": "https://github.com/qbittorrent/qBittorrent",
+      "distributor": "yukihana",
+      "distributor_url": "https://github.com/sushazhi/fnos-qbittorrent",
+      "arch_suffix": {
+        "x86": "-amd64",
+        "arm": "-arm64"
+      },
+      "run_as": "package",
+      "install_type": "",
+      "is_docker": false
+    },
+    {
+      "repo": "fnos-transmission",
+      "key": "transmission",
+      "display_name": "Transmission",
+      "desc": "轻量级BitTorrent下载工具，支持磁力链接、种子文件、DHT/PEX/LSD P2P网络。默认启用现代简洁的Transmission Web界面，接入fnOS统一网关免密登录，支持自动检测更新。",
+      "platform": [
+        "all"
+      ],
+      "categories": [
+        "影音娱乐"
+      ],
+      "os_min_version": "1.1.3105",
+      "service_port": "",
+      "maintainer": "Transmission",
+      "maintainer_url": "https://github.com/transmission/transmission",
+      "distributor": "yukihana",
+      "distributor_url": "https://github.com/sushazhi/fnos-transmission",
+      "arch_suffix": {
+        "x86": "-amd64",
+        "arm": "-arm64"
+      },
+      "run_as": "package",
+      "install_type": "",
+      "is_docker": false
+    }
+  ]
+}

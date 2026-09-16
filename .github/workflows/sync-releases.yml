@@ -1,0 +1,53 @@
+name: 自动同步最新版本
+
+# 每天自动从 config.json 里配置的 GitHub 仓库拉取最新 Release，
+# 重建 fnpack.json 的 releases 并提交。也可通过 Actions 页面手动触发。
+on:
+  schedule:
+    # 每天 UTC 16:00 = 北京时间 00:00
+    - cron: "0 16 * * *"
+  workflow_dispatch:
+    # 手动触发时可选传入一个 PAT（用于私有仓库 / 更高速率限制）
+    inputs:
+      my_pat:
+        description: "可选：用于访问 GitHub API 的 Personal Access Token（默认使用内置 GITHUB_TOKEN）"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v7
+
+      - name: 设置 Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.14"
+
+      - name: 运行同步脚本
+        env:
+          # 手动触发的 PAT > 仓库 secret MY_PAT_TOKEN > 内置 GITHUB_TOKEN
+          GITHUB_TOKEN: ${{ inputs.my_pat || secrets.MY_PAT_TOKEN || github.token }}
+        run: python scripts/sync_releases.py
+
+      - name: 校验生成的 JSON
+        run: |
+          python -c "import json; json.load(open('fnpack.json', encoding='utf-8'))"
+          echo "fnpack.json JSON 语法校验通过"
+
+      - name: 提交并推送
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898382+github-actions[bot]@users.noreply.github.com"
+          git add fnpack.json
+          if git diff --cached --quiet; then
+            echo "fnpack.json 无变化，跳过提交。"
+          else
+            git commit -m "🤖 自动同步最新版本 $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push origin HEAD
+          fi
