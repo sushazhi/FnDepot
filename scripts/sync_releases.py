@@ -150,9 +150,11 @@ def build_packages(app: dict, release: dict, owner: str, repo: str) -> dict:
     return packages
 
 
-def default_app_from_config(app: dict) -> dict:
+def default_app_from_config(app: dict, owner: str = "") -> dict:
     """当 fnpack 中尚不存在该应用时，用 config 生成一个默认应用节点。"""
     key = app["key"]
+    repo = app.get("repo", "")
+    slug = f"{owner}/{repo}" if owner and repo else repo
     base = {
         "display_name": app.get("display_name", key),
         "desc": app.get("desc", ""),
@@ -160,7 +162,7 @@ def default_app_from_config(app: dict) -> dict:
         "categories": app.get("categories", []),
         "icon_url": f"./{key}/ICON.PNG",
         "readme_url": f"./{key}/README.md",
-        "bug_report_url": f"https://github.com/{app.get('repo', '')}/issues" if app.get("repo") else "",
+        "bug_report_url": f"https://github.com/{slug}/issues" if slug else "",
         "maintainer": app.get("maintainer", ""),
         "maintainer_url": app.get("maintainer_url", ""),
         "distributor": app.get("distributor", ""),
@@ -227,7 +229,7 @@ def main() -> int:
 
         # 合并进 fnpack：保留该应用的静态字段，仅重建 releases
         if key not in apps:
-            apps[key] = default_app_from_config(app)
+            apps[key] = default_app_from_config(app, owner)
         node = apps[key]
         # 用 config 中提供的权威字段覆盖静态信息（保持配置为准）
         for field in ("display_name", "desc", "platform", "categories",

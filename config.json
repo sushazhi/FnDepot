@@ -22,7 +22,7 @@
       "asset_name_pattern": "logmanager-{ver}.fpk",
       "arch_suffix": {},
       "sha256_asset": "logmanager-{ver}.fpk.sha256",
-      "run_as": "package",
+      "run_as": "root",
       "install_type": "",
       "is_docker": false
     },
@@ -68,6 +68,31 @@
       "maintainer_url": "https://github.com/transmission/transmission",
       "distributor": "yukihana",
       "distributor_url": "https://github.com/sushazhi/fnos-transmission",
+      "arch_suffix": {
+        "x86": "-amd64",
+        "arm": "-arm64"
+      },
+      "run_as": "package",
+      "install_type": "",
+      "is_docker": false
+    },
+    {
+      "repo": "fnos-MoviePilot",
+      "key": "moviepilot",
+      "display_name": "MoviePilot",
+      "desc": "NAS 媒体库自动化管理工具，支持订阅、搜索、下载、媒体整理与刮削、媒体库刷新及消息通知等核心自动化流程。不依赖 Docker，自带 Python 运行时的原生应用，通过 fnOS 统一网关免密访问，默认使用 SQLite 开箱即用。",
+      "platform": [
+        "all"
+      ],
+      "categories": [
+        "影音娱乐"
+      ],
+      "os_min_version": "1.1.3104",
+      "service_port": "",
+      "maintainer": "MoviePilot",
+      "maintainer_url": "https://github.com/jxxghp/MoviePilot",
+      "distributor": "yukihana",
+      "distributor_url": "https://github.com/sushazhi/fnos-MoviePilot",
       "arch_suffix": {
         "x86": "-amd64",
         "arm": "-arm64"
