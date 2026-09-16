@@ -23,7 +23,7 @@
       "maintainer_url": "https://github.com/sushazhi",
       "distributor": "yukihana",
       "distributor_url": "https://github.com/sushazhi/fnos-logmanager",
-      "run_as": "package",
+      "run_as": "root",
       "install_type": "",
       "is_docker": false,
       "service_port": "",
@@ -76,8 +76,9 @@
         }
       },
       "preview_urls": [
-        "./logmanager/Preview/icon_256.png",
-        "./logmanager/Preview/icon_64.png"
+        "./logmanager/Preview/logmanager1.png",
+        "./logmanager/Preview/logmanager2.png",
+        "./logmanager/Preview/logmanager3.png"
       ]
     },
     "qbittorrent": {
@@ -163,8 +164,9 @@
         }
       },
       "preview_urls": [
-        "./qbittorrent/Preview/icon_256.png",
-        "./qbittorrent/Preview/icon_64.png"
+        "./qbittorrent/Preview/qbittorrent1.png",
+        "./qbittorrent/Preview/qbittorrent2.png",
+        "./qbittorrent/Preview/qbittorrent3.png"
       ]
     },
     "transmission": {
@@ -238,8 +240,9 @@
         }
       },
       "preview_urls": [
-        "./transmission/Preview/icon_256.png",
-        "./transmission/Preview/icon_64.png"
+        "./transmission/Preview/transmission-dark.png",
+        "./transmission/Preview/transmission-light.png",
+        "./transmission/Preview/transmission-mobile.png"
       ]
     }
   }
