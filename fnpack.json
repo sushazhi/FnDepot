@@ -29,7 +29,7 @@
       "service_port": "",
       "releases": {
         "0.8.1": {
-          "changelog": "v0.8.1\n1. 修复升级到 fnOS 1.2.0604 后接口报 \"invalid token\"、日志列表/查看等功能全部失败的问题（不再把应用会话 token 放进 Authorization 请求头，避免被统一网关当成飞牛票据拦截）\n2. 网关登录态失效时给出明确提示，不再显示 \"Unexpected token ... is not valid JSON\" 之类的解析错误\n3. 修正 MCP 端点说明：外部 AI Agent 必须通过独立端口接入（网关路径无法使用）\n4. 优化首页加载速度：日志目录改为单次遍历 + 缓存 + 并行扫描，目录显示名改为批量转换\n5. 修复新版本提示卡片更新内容不换行、超出卡片的问题，并加大更新内容的显示高度\n\n---\n**SHA256:** `4a429c3e96b365b97f99a9e18940888c66a6034a0a4693da5a1dd7801b3d758f`",
+          "changelog": "v0.8.1\n1. 修复升级到 fnOS 1.2.0604 后接口报 \"invalid token\"、日志列表/查看等功能全部失败的问题（不再把应用会话 token 放进 Authorization 请求头，避免被统一网关当成飞牛票据拦截）\n2. 网关登录态失效时给出明确提示，不再显示 \"Unexpected token ... is not valid JSON\" 之类的解析错误\n3. 修正 MCP 端点说明：外部 AI Agent 必须通过独立端口接入（网关路径无法使用）\n4. 优化首页加载速度：日志目录改为单次遍历 + 缓存 + 并行扫描，目录显示名改为批量转换\n5. 修复新版本提示卡片更新内容不换行、超出卡片的问题，并加大更新内容的显示高度",
           "updated_at": "2026-09-11T21:28:28+08:00",
           "os_min_version": "1.2.0401",
           "packages": {
@@ -41,7 +41,7 @@
           }
         },
         "0.8.0": {
-          "changelog": "v0.8.0\n1. 新增 Linux 内核版本管理功能\n2. 通知规则支持 IP 白名单(白名单来源登录事件跳过推送)\n3. 后端迁移至Go\n4. 新增 MCP 服务器，支持AI Agent 接入管理日志\n5. 新增进程管理功能\n6. 新增清理已卸载应用残留目录改为移入回收站，支持还原（默认24小时自动清空）\n7. 新增应用中心/连接服务/开放网关/账号服务/更新管理 5个系统服务日志目录\n\n---\n**SHA256:** `ddd5dde9b144d66c256aa808b758c318f34e2adc16e59d1df2d227ba8716487a`",
+          "changelog": "v0.8.0\n1. 新增 Linux 内核版本管理功能\n2. 通知规则支持 IP 白名单(白名单来源登录事件跳过推送)\n3. 后端迁移至Go\n4. 新增 MCP 服务器，支持AI Agent 接入管理日志\n5. 新增进程管理功能\n6. 新增清理已卸载应用残留目录改为移入回收站，支持还原（默认24小时自动清空）\n7. 新增应用中心/连接服务/开放网关/账号服务/更新管理 5个系统服务日志目录",
           "updated_at": "2026-09-03T23:46:04+08:00",
           "os_min_version": "1.2.0401",
           "packages": {
@@ -191,7 +191,7 @@
       "service_port": "",
       "releases": {
         "4.1.3.3": {
-          "changelog": "更新日志<br>v4.1.3.3:<br>1. transmission-daemon 改为 Alpine musl 全静态编译，去除 glibc 动态库依赖<br>2. WebUI 更换为基于 Go+React 的 trpanel 管理面板",
+          "changelog": "更新日志\nv4.1.3.3:\n1. transmission-daemon 改为 Alpine musl 全静态编译，去除 glibc 动态库依赖\n2. WebUI 更换为基于 Go+React 的 trpanel 管理面板",
           "updated_at": "2026-09-19T22:10:11+08:00",
           "os_min_version": "1.1.3105",
           "packages": {
@@ -206,7 +206,7 @@
           }
         },
         "4.1.3.2": {
-          "changelog": "更新日志<br>v4.1.3.2:<br>1. 修复 apptemp 目录权限导致 Transmission 反复重启的问题<br>2. 添加对 amd64 (x86_64) 架构支持",
+          "changelog": "更新日志\nv4.1.3.2:\n1. 修复 apptemp 目录权限导致 Transmission 反复重启的问题\n2. 添加对 amd64 (x86_64) 架构支持",
           "updated_at": "2026-08-04T21:12:10+08:00",
           "os_min_version": "1.1.3105",
           "packages": {
@@ -221,7 +221,7 @@
           }
         },
         "4.1.3.1": {
-          "changelog": "更新日志<br>v4.1.3.1: 升级至transmission 4.1.3",
+          "changelog": "更新日志\nv4.1.3.1: 升级至transmission 4.1.3",
           "updated_at": "2026-07-02T20:15:36+08:00",
           "os_min_version": "1.1.3105",
           "packages": {
@@ -232,7 +232,7 @@
           }
         },
         "4.1.3": {
-          "changelog": "更新日志<br>v4.1.3: 升级至transmission 4.1.3",
+          "changelog": "更新日志\nv4.1.3: 升级至transmission 4.1.3",
           "updated_at": "2026-07-01T21:13:23+08:00",
           "os_min_version": "1.1.3105",
           "packages": {
