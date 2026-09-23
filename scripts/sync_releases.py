@@ -9,7 +9,8 @@ sync_releases.py — 自动同步 GitHub Release 到 fnpack.json
 2. 逐个应用调用 GitHub API 拉取该仓库最新的 N 个正式 Release（N = config.keep_latest）。
 3. 按应用规则（asset_name_pattern / arch_suffix / sha256_asset）重建 fnpack.json 中
    该应用的 `releases` 字段；应用的其余静态字段（图标、README、预览图、反馈链接等）保持不变。
-   changelog 取 Release 正文并做归一化：`<br>` 换成换行（客户端只认 `\n`），丢弃结尾的 SHA256 页脚。
+   changelog 取 Release 正文并做归一化：`<br>` 换成换行（客户端只认 `\n`），丢弃 `<b>`/`</b>`
+   与结尾的 SHA256 页脚。
 4. 将结果写回 fnpack.json（UTF-8，无 BOM，缩进 2，保留中文）。
 
 仅依赖 Python 标准库，无需安装第三方包。
@@ -36,6 +37,7 @@ API_BASE = "https://api.github.com"
 BEIJING_TZ = timezone(timedelta(hours=8))
 SHA256_RE = re.compile(r"\b[0-9a-f]{64}\b")
 BR_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
+BOLD_RE = re.compile(r"</?b\s*>", re.IGNORECASE)
 SHA256_FOOTER_RE = re.compile(r"(?:\r?\n)+\s*-{3,}\s*(?:\r?\n)+\s*\*\*SHA256:", re.IGNORECASE)
 TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
 
@@ -99,8 +101,9 @@ def parse_sha256(raw: bytes) -> str:
 
 
 def normalize_changelog(body: str) -> str:
-    """Release 正文归一化成 changelog：<br> 换成换行，去掉结尾的 SHA256 页脚。"""
+    """Release 正文归一化成 changelog：<br> 换成换行，去掉 <b>/</b> 与结尾的 SHA256 页脚。"""
     text = BR_RE.sub("\n", body)
+    text = BOLD_RE.sub("", text)
     m = SHA256_FOOTER_RE.search(text)
     if m:
         text = text[:m.start()]
