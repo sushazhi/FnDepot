@@ -11,7 +11,9 @@ sync_releases.py — 自动同步 GitHub Release 到 fnpack.json
    该应用的 `releases` 字段；应用的其余静态字段（图标、README、预览图、反馈链接等）保持不变。
    changelog 取 Release 正文并做归一化：`<br>` 换成换行（客户端只认 `\n`），丢弃 `<b>`/`</b>`
    与结尾的 SHA256 页脚。
-4. 将结果写回 fnpack.json（UTF-8，无 BOM，缩进 2，保留中文）。
+4. 顺带把根目录 README.md「应用一览」表格里的「最新版本」列刷新为各应用当前最新版本
+   （该列由脚本生成，不要手工改；如需关闭，在 config.json 里设 update_readme_versions=false）。
+5. 将结果写回 fnpack.json 与 README.md（UTF-8，无 BOM，缩进 2，保留中文）。
 
 仅依赖 Python 标准库，无需安装第三方包。
 
@@ -212,6 +214,63 @@ def build_packages(app: dict, release: dict, owner: str, repo: str) -> dict:
     return packages
 
 
+README_PATH = os.path.join(ROOT, "README.md")
+
+# README「应用一览」表格里的一行：| [名称](#锚点) | 说明 | 分类 | 架构 | 版本 |
+# 只匹配表格行（以 "| [" 开头、以 "|" 结尾）。prefix 覆盖到版本列之前的那个 "|"，
+# 版本列本身用 \s*[^|]*\| 吃掉，重写时只替换版本列，其余单元格原样保留。
+README_ROW_RE = re.compile(
+    r"^(?P<prefix>\|\s*\[[^\]]*\]\(#(?P<anchor>[^)]+)\)\s*\|.*\|)\s*[^|]*\|\s*$"
+)
+
+
+def update_readme_versions(fnpack: dict) -> int:
+    """把根目录 README「应用一览」表格的「最新版本」列刷新成 fnpack 里的实际最新版本。
+
+    该列由脚本生成，避免手工维护导致与 fnpack.json 漂移。返回更新的行数。
+    """
+    if not os.path.isfile(README_PATH):
+        log(f"    [警告] 未找到 {README_PATH}，跳过 README 版本列更新")
+        return 0
+
+    with open(README_PATH, "r", encoding="utf-8") as f:
+        lines = f.read().split("\n")
+
+    # 锚点 -> 最新版本。锚点形如 "21-飞牛日志管理logmanager"，取其中的 app key 做后缀匹配。
+    latest = {}
+    for key, app in fnpack.get("apps", {}).items():
+        rels = app.get("releases") or {}
+        if rels:
+            latest[key] = sorted(rels, key=version_key, reverse=True)[0]
+
+    changed = 0
+    for i, line in enumerate(lines):
+        m = README_ROW_RE.match(line)
+        if not m:
+            continue
+        anchor = m.group("anchor")
+        # 用 app key 匹配锚点末尾（锚点里含中文，key 是 ASCII，匹配更稳）。
+        # 取最长匹配，避免某个 key 恰是另一个 key 后缀时误配。
+        hit = next((k for k in sorted(latest, key=len, reverse=True)
+                    if anchor.endswith(k)), None)
+        if not hit:
+            continue
+        ver = latest[hit]
+        # prefix 已包含版本列前的那个 "|"，因此这里补 " <ver> |" 即可。
+        new_line = f"{m.group('prefix')} {ver} |"
+        if new_line != line:
+            lines[i] = new_line
+            changed += 1
+
+    if changed:
+        with open(README_PATH, "w", encoding="utf-8", newline="\n") as f:
+            f.write("\n".join(lines))
+        log(f"    -> 更新 README.md 版本列 {changed} 行")
+    else:
+        log("    -> README.md 版本列无需更新")
+    return changed
+
+
 def default_app_from_config(app: dict, owner: str = "") -> dict:
     """当 fnpack 中尚不存在该应用时，用 config 生成一个默认应用节点。"""
     key = app["key"]
@@ -314,6 +373,9 @@ def main() -> int:
         json.dump(fnpack, f, ensure_ascii=False, indent=2)
         f.write("\n")
     log(f"完成：已写回 {FNPACK_PATH}，共更新 {total_versions} 个版本。")
+
+    if config.get("update_readme_versions", True):
+        update_readme_versions(fnpack)
     return 0
 
 

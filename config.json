@@ -1,6 +1,7 @@
 {
   "github_owner": "sushazhi",
   "keep_latest": 4,
+  "update_readme_versions": true,
   "apps": [
     {
       "repo": "fnos-logmanager",

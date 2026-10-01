@@ -15,11 +15,13 @@
 
 ## 1. 应用一览
 
+> 下表的「最新版本」列由同步脚本自动刷新，**请勿手工编辑**（改了下一次同步也会被覆盖）。
+
 | 应用 | 说明 | 分类 | 架构 | 最新版本 |
 | --- | --- | --- | --- | --- |
 | [飞牛日志管理](#21-飞牛日志管理logmanager) | 集中管理三方应用散落的日志文件 | 系统工具 | `all` | 0.8.1 |
 | [qBittorrent](#22-qbittorrent) | 功能强大的 BitTorrent 下载工具 | 影音娱乐 | `x86` / `arm` | 5.2.3.2 |
-| [Transmission](#23-transmission) | 轻量级 BitTorrent 下载工具 | 影音娱乐 | `x86` / `arm` | 4.1.3.3 |
+| [Transmission](#23-transmission) | 轻量级 BitTorrent 下载工具 | 影音娱乐 | `x86` / `arm` | 4.1.3.4 |
 | [MoviePilot](#24-moviepilot) | NAS 媒体库自动化管理 | 影音娱乐 | `x86` / `arm` | 1.0.7 |
 | [Agent2API](#25-agent2api) | 多提供商账号池 → OpenAI 兼容 API | AI赋能 / 编程开发 | `x86` / `arm` | 2.9.0-2 |
 | [CLI2API](#26-cli2api) | Qoder CLI → OpenAI 兼容 API | AI赋能 / 编程开发 | `x86` / `arm` | 0.6.13-1 |
@@ -199,6 +201,9 @@ FnDepot/
    对应 `cli2api-0.6.13-1-amd64.fpk`），在 `config.json` 里为该应用声明
    `version_from_asset: true`，脚本会从资产名回推真正的版本号；各架构版本号
    不一致时退回 tag，不会猜。
+6. 本文件「[应用一览](#1-应用一览)」表格里的「最新版本」列也由同一个脚本刷新，
+   所以它不会与 `fnpack.json` 漂移。**该列不要手工编辑**；如需关闭这项更新，
+   在 `config.json` 里设 `update_readme_versions: false`。
 
 手动触发：仓库 **Actions → 自动同步最新版本 → Run workflow**
 （可选传入 PAT 以访问私有仓库或提高 API 速率限制）。
