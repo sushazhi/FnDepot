@@ -38,7 +38,10 @@ BEIJING_TZ = timezone(timedelta(hours=8))
 SHA256_RE = re.compile(r"\b[0-9a-f]{64}\b")
 BR_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
 BOLD_RE = re.compile(r"</?b\s*>", re.IGNORECASE)
-SHA256_FOOTER_RE = re.compile(r"(?:\r?\n)+\s*-{3,}\s*(?:\r?\n)+\s*\*\*SHA256:", re.IGNORECASE)
+# 结尾校验页脚。形态不固定，实测见过：
+#   "\n\n---\n\n**SHA256:** `...`" 与 "\n\n---\n\n**SHA256 (amd64):** `...`"
+# 因此允许 **SHA256 后跟任意后缀（如 "(amd64)"）再跟冒号，整行到行尾都算页脚。
+SHA256_FOOTER_RE = re.compile(r"(?:\r?\n)+\s*-{3,}\s*(?:\r?\n)+\s*\*\*SHA256\b[^\n]*", re.IGNORECASE)
 TOKEN = os.environ.get("GITHUB_TOKEN", "").strip()
 
 
@@ -101,21 +104,57 @@ def parse_sha256(raw: bytes) -> str:
 
 
 def normalize_changelog(body: str) -> str:
-    """Release 正文归一化成 changelog：<br> 换成换行，去掉 <b>/</b> 与结尾的 SHA256 页脚。"""
+    """Release 正文归一化成 changelog：<br> 换成换行，去掉 <b>/</b> 与结尾的 SHA256 页脚。
+
+    客户端只认 `\\n`，因此这里统一换行符（GitHub 正文常见 `\\r\\n`）。
+    """
     text = BR_RE.sub("\n", body)
     text = BOLD_RE.sub("", text)
     m = SHA256_FOOTER_RE.search(text)
     if m:
         text = text[:m.start()]
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
     return text.strip()
+
+
+def resolve_version(app: dict, tag: str, assets: list = None) -> str:
+    """把 Release tag 解析成 fnpack 里使用的版本号。
+
+    默认 tag 去掉前缀 v 就是版本号（`v1.2.3.2` -> `1.2.3.2`）。但有的仓库 tag 只标
+    上游版本、真正的 FPK 版本号带打包修订号（如 tag `v0.6.13` 对应
+    `cli2api-0.6.13-1-amd64.fpk`，版本应为 `0.6.13-1`）。此时在 config 里为应用声明
+    `version_from_asset: true`，改为从资产名回推版本号。
+    """
+    fallback = tag.lstrip("vV")
+    if not app.get("version_from_asset"):
+        return fallback
+
+    key = app["key"]
+    pat = re.compile(r"^" + re.escape(key) + r"-(.+?)\.fpk$")
+    suffixes = [s for s in (app.get("arch_suffix") or {}).values() if s]
+
+    versions = set()
+    for a in assets or []:
+        m = pat.match(a.get("name", ""))
+        if not m:
+            continue
+        v = m.group(1)
+        for s in suffixes:
+            if v.endswith(s):
+                v = v[: -len(s)]
+                break
+        versions.add(v)
+
+    # 同一 Release 的各架构资产版本号应当一致；不一致说明规则不适用，退回 tag。
+    return versions.pop() if len(versions) == 1 else fallback
 
 
 def build_packages(app: dict, release: dict, owner: str, repo: str) -> dict:
     """根据应用规则与 Release 的资产，构建 packages 字段。"""
     key = app["key"]
     tag = release["tag_name"]
-    version = tag.lstrip("vV")
     assets = release.get("assets", [])
+    version = release.get("_version") or resolve_version(app, tag, assets)
     assets_by_name = {a["name"]: a for a in assets}
 
     arch_suffix = app.get("arch_suffix") or {}
@@ -133,6 +172,14 @@ def build_packages(app: dict, release: dict, owner: str, repo: str) -> dict:
                 "download_url": a["browser_download_url"],
                 "size": a["size"],
             }
+            # 可选：多架构下从资产自带的 digest 取 SHA256（GitHub 对每个资产提供
+            # "sha256:<hex>"，无需额外 .sha256 文件）
+            if app.get("sha256_from_asset_digest"):
+                digest = a.get("digest") or ""
+                if digest.startswith("sha256:"):
+                    pkg["sha256"] = digest.split(":", 1)[1]
+                else:
+                    log(f"    [警告] {repo} {tag} {name} 缺少资产 digest，未写入 SHA256")
             packages[arch] = pkg
     else:
         # 单包（通用 all 包）：命名取自 asset_name_pattern，默认 {key}-{ver}.fpk
@@ -226,7 +273,9 @@ def main() -> int:
         new_releases = {}
         for r in releases:
             tag = r["tag_name"]
-            version = tag.lstrip("vV")
+            # 版本号可能不等于 tag（见 resolve_version）
+            version = resolve_version(app, tag, r.get("assets", []))
+            r["_version"] = version
             packages = build_packages(app, r, owner, repo)
             if not packages:
                 log(f"    [跳过] {repo} {tag} 无可用资产，不写入")

@@ -100,6 +100,70 @@
       "run_as": "package",
       "install_type": "",
       "is_docker": false
+    },
+    {
+      "repo": "fnos-agent2api",
+      "key": "agent2api",
+      "display_name": "Agent2API",
+      "desc": "多提供商账号池 → OpenAI 兼容 API 网关（基于上游 agent2api），内置官方 Web 控制台；单文件静态二进制，无需 Docker、无需 Node 运行时，安装即用。内置 7 个提供商适配（WorkBuddy / 小浣熊 / CatPaw / AutoClaw / Qoder / Cline Free / Cline Pass），多账号轮转、失败重试，本地 SQLite 持久化。控制台走统一网关 /app/agent2api 免密登录、仅管理员可访问，外部客户端走独立端口 3065/v1。",
+      "platform": [
+        "all"
+      ],
+      "categories": [
+        "AI赋能",
+        "编程开发"
+      ],
+      "os_min_version": "1.2.0401",
+      "service_port": "3065",
+      "maintainer": "aimod-cc",
+      "maintainer_url": "https://github.com/aimod-cc/agent2api",
+      "distributor": "sushazhi",
+      "distributor_url": "https://github.com/sushazhi/fnos-agent2api",
+      "arch_suffix": {
+        "x86": "-amd64",
+        "arm": "-arm64"
+      },
+      "sha256_from_asset_digest": true,
+      "preview_urls": [
+        "./agent2api/Preview/agent2api1.png",
+        "./agent2api/Preview/agent2api2.png",
+        "./agent2api/Preview/agent2api3.png"
+      ],
+      "run_as": "package",
+      "install_type": "",
+      "is_docker": false
+    },
+    {
+      "repo": "fnos-cli2api",
+      "key": "cli2api",
+      "display_name": "CLI2API",
+      "desc": "Qoder CLI → OpenAI 兼容 API 网关（基于上游 cli2api），内置官方 Web 控制台，Qoder 运行组件随包携带、安装即用。支持标准 /v1/chat/completions、/v1/models、/v1/messages、/v1/responses，多账号加权轮转、失败重试、熔断与冷却，支持 Qoder 全球区与国内区账号。控制台走统一网关 /app/cli2api 免密登录、仅管理员可访问，外部客户端走独立端口 3010/v1。",
+      "platform": [
+        "all"
+      ],
+      "categories": [
+        "AI赋能",
+        "编程开发"
+      ],
+      "os_min_version": "1.2.0401",
+      "service_port": "3010",
+      "maintainer": "caigee-cmd",
+      "maintainer_url": "https://github.com/caigee-cmd/cli2api",
+      "distributor": "yukihana",
+      "distributor_url": "https://github.com/sushazhi/fnos-cli2api",
+      "arch_suffix": {
+        "x86": "-amd64",
+        "arm": "-arm64"
+      },
+      "sha256_from_asset_digest": true,
+      "version_from_asset": true,
+      "preview_urls": [
+        "./cli2api/Preview/cli2api1.png",
+        "./cli2api/Preview/cli2api2.png"
+      ],
+      "run_as": "package",
+      "install_type": "",
+      "is_docker": false
     }
   ]
 }
