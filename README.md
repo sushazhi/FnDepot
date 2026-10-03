@@ -5,7 +5,7 @@
 
 - **源地址**：`https://github.com/sushazhi/FnDepot`
 - **索引文件**：本仓库根目录的 [`fnpack.json`](./fnpack.json)（外部源规范 V2）
-- **应用总数**：6 个（4 个影音/系统工具 + 2 个 AI API 网关）
+- **应用总数**：7 个（5 个影音/系统工具 + 2 个 AI API 网关）
 
 > 外部源由用户自行添加，仅在用户本地客户端中生效。FnDepot 不对外部源的应用代码、
 > 安装包安全性或运行稳定性做审核、担保或背书。添加方式与源规范见
@@ -25,6 +25,7 @@
 | [MoviePilot](#24-moviepilot) | NAS 媒体库自动化管理 | 影音娱乐 | `x86` / `arm` | 1.0.7 |
 | [Agent2API](#25-agent2api) | 多提供商账号池 → OpenAI 兼容 API | AI赋能 / 编程开发 | `x86` / `arm` | 2.9.0-2 |
 | [CLI2API](#26-cli2api) | Qoder CLI → OpenAI 兼容 API | AI赋能 / 编程开发 | `x86` / `arm` | 0.6.13-1 |
+| [Mihomo](#27-mihomo) | Clash.Meta 代理内核，带控制面板 | 系统工具 | `x86` / `arm` | 1.0.6 |
 
 ---
 
@@ -133,6 +134,29 @@
 - 最低系统版本：fnOS 1.2.0401
 - 详细说明：[`cli2api/README.md`](./cli2api/README.md)
 
+### 2.7 Mihomo
+
+> 把 mihomo（Clash.Meta）代理内核做成飞牛原生应用，不带 Docker。
+
+上游 [MetaCubeX/mihomo](https://github.com/MetaCubeX/mihomo) 内核 + 配套适配与打包层。
+
+- **混合代理端口**（默认 `7890`）：HTTP / SOCKS5 同端口，局域网设备与容器直接可用
+- **Clash API**（默认 `9090`）：供 MetaCubeXD、Zashboard 等第三方面板与客户端连接
+- **内置控制面板**：首次点图标可选 **MetaCubeXD**（官方面板）或 **Zashboard**；
+  面板经同源反代访问 Clash API，**密钥不下发前端**
+- **统一网关接入**：控制台走 `/app/mihomo`，免密登录，复用 NAS 登录态
+- **通道分级授权**：经网关（已登录）放行完整 Clash API；局域网直连仅放行只读白名单
+- **订阅支持**：填订阅链接即可，启动时拉取并强制修正 `mixed-port` / `allow-lan` /
+  `external-controller`，避免订阅内容覆盖导致局域网不可用
+- **节点切换与流量监控**：面板内直接切换节点、查看实时连接
+- **不使用 Docker**：内核与面板随包携带，安装即用
+
+- 运行身份：`package`
+- 最低系统版本：fnOS 1.1.3100
+- ⚠️ TUN 模式未启用（需 `run-as=root`，已知 `setcap` 路线在真机被否决）
+- ⚠️ 本包内含 GPL-3.0 的 mihomo 内核，随包附带许可证全文
+- 详细说明：[`mihomo/README.md`](./mihomo/README.md)
+
 ---
 
 ## 3. 在飞牛里添加本应用源
@@ -146,7 +170,7 @@
 
    也可以填入 `fnpack.json` 的 JSON 直链。
 
-3. 同步后即可在源里看到上表中的 6 个应用，按机型（x86 / arm）选择对应安装包安装。
+3. 同步后即可在源里看到上表中的 7 个应用，按机型（x86 / arm）选择对应安装包安装。
 
 > 客户端需 > 0.0.7 才支持 V2 源。由于飞牛已启用 httponly，旧版客户端将无法继续
 > 使用，新版本已完成适配。
@@ -170,7 +194,8 @@ FnDepot/
 ├── transmission/
 ├── moviepilot/
 ├── agent2api/
-└── cli2api/
+├── cli2api/
+└── mihomo/
 ```
 
 每个应用目录的约定结构：

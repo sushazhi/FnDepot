@@ -4,7 +4,7 @@
     "name": "yukihana 应用源",
     "author": "yukihana",
     "homepage": "https://github.com/sushazhi",
-    "description": "MoviePilot / qBittorrent / Transmission / Agent2API / CLI2API / 日志管理等飞牛NAS应用（yukihana 维护）"
+    "description": "MoviePilot / qBittorrent / Transmission / Mihomo / Agent2API / CLI2API / 日志管理等飞牛NAS应用（yukihana 维护）"
   },
   "apps": {
     "logmanager": {
@@ -417,6 +417,46 @@
         "./cli2api/Preview/cli2api1.png",
         "./cli2api/Preview/cli2api2.png"
       ]
+    },
+    "mihomo": {
+      "display_name": "Mihomo",
+      "desc": "Mihomo（Clash Meta）代理内核 fnOS 原生应用：开机自启，混合代理端口（HTTP/SOCKS5）+ Clash API + 内置控制面板（MetaCubeXD / Zashboard）。控制面板走统一网关 /app/mihomo 免密登录，密钥不下发前端；代理端口与 Clash API 为独立 TCP 端口，供局域网设备与第三方客户端直连。支持订阅、节点切换与流量监控。",
+      "platform": [
+        "all"
+      ],
+      "categories": [
+        "系统工具"
+      ],
+      "icon_url": "./mihomo/ICON.PNG",
+      "readme_url": "./mihomo/README.md",
+      "bug_report_url": "https://github.com/sushazhi/fnos-mihomo/issues",
+      "maintainer": "MetaCubeX",
+      "maintainer_url": "https://github.com/MetaCubeX/mihomo",
+      "distributor": "yukihana",
+      "distributor_url": "https://github.com/sushazhi/fnos-mihomo",
+      "run_as": "package",
+      "install_type": "",
+      "is_docker": false,
+      "service_port": "",
+      "releases": {
+        "1.0.6": {
+          "changelog": "**Full Changelog**: https://github.com/sushazhi/fnos-mihomo/commits/v1.0.6",
+          "updated_at": "2026-10-04T00:08:10+08:00",
+          "os_min_version": "1.1.3100",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-mihomo/releases/download/v1.0.6/mihomo-1.0.6-amd64.fpk",
+              "size": 33434256,
+              "sha256": "460f952f2cda355ee891da013805dc9302b0d36f118f350e4ff833e500627136"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-mihomo/releases/download/v1.0.6/mihomo-1.0.6-arm64.fpk",
+              "size": 31419769,
+              "sha256": "14a70c37dcefea64f7887a23888d78619707bd2ba994ce4bf4c9961d3e697f87"
+            }
+          }
+        }
+      }
     }
   }
 }

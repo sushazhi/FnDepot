@@ -165,6 +165,32 @@
       "run_as": "package",
       "install_type": "",
       "is_docker": false
+    },
+    {
+      "repo": "fnos-mihomo",
+      "key": "mihomo",
+      "display_name": "Mihomo",
+      "desc": "Mihomo（Clash Meta）代理内核 fnOS 原生应用：开机自启，混合代理端口（HTTP/SOCKS5）+ Clash API + 内置控制面板（MetaCubeXD / Zashboard）。控制面板走统一网关 /app/mihomo 免密登录，密钥不下发前端；代理端口与 Clash API 为独立 TCP 端口，供局域网设备与第三方客户端直连。支持订阅、节点切换与流量监控。",
+      "platform": [
+        "all"
+      ],
+      "categories": [
+        "系统工具"
+      ],
+      "os_min_version": "1.1.3100",
+      "service_port": "",
+      "maintainer": "MetaCubeX",
+      "maintainer_url": "https://github.com/MetaCubeX/mihomo",
+      "distributor": "yukihana",
+      "distributor_url": "https://github.com/sushazhi/fnos-mihomo",
+      "arch_suffix": {
+        "x86": "-amd64",
+        "arm": "-arm64"
+      },
+      "sha256_from_asset_digest": true,
+      "run_as": "package",
+      "install_type": "",
+      "is_docker": false
     }
   ]
 }
