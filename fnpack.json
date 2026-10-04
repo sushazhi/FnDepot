@@ -274,6 +274,21 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "3.1.0": {
+          "changelog": "v3.1.0\n1.跟进上游 MoviePilot v3.1.0\n2.新增重启时自动检查更新认证资源和站点资源",
+          "updated_at": "2026-10-04T23:35:37+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.0/moviepilot-3.1.0-amd64.fpk",
+              "size": 272860440
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.0/moviepilot-3.1.0-arm64.fpk",
+              "size": 255500956
+            }
+          }
+        },
         "3.0.10-1": {
           "changelog": "v3.0.10-1\n1.跟进上游 MoviePilot v3.0.10-1：构建 pin 与 manifest 版本同步更新，包名版本与上游 tag 一一对应\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.7 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-10-01T21:16:59+08:00",
@@ -410,6 +425,23 @@
       "is_docker": false,
       "service_port": "3010",
       "releases": {
+        "0.6.15-1": {
+          "changelog": "## English\n\n- Run the Qoder CN check-in fingerprint from an executable directory when the account runtime directory cannot run programs.\n\n## 中文\n\n- 账号运行目录不能执行程序时，Qoder 国内版签到会改到可执行目录读取机器指纹。",
+          "updated_at": "2026-10-04T18:38:23+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.15/cli2api-0.6.15-1-amd64.fpk",
+              "size": 82861050,
+              "sha256": "2350925df7e5d8a9ab2b0a26226dd2082f764c68b3ff1d6b74e7231161e38d10"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.15/cli2api-0.6.15-1-arm64.fpk",
+              "size": 81238082,
+              "sha256": "41821c82dcf409469d7304e66f5a65ee8b1bb725fd5822483fa2dbf98453c0eb"
+            }
+          }
+        },
         "0.6.13-1": {
           "changelog": "## English\n\n- Add a system setting to let disabled accounts continue their opted-in automatic daily check-in without making them eligible for chat routing.\n- Fix Qoder CN daily check-in by sending the machine identity headers required by the campaign service.\n- A routing region latch no longer survives a large change in pool composition. Adding or migrating many accounts of another region now re-seats the route on the largest region instead of leaving the new accounts idle.\n\n## 中文\n\n- 新增系统设置，允许停用账号继续执行已开启的自动签到，同时不会让它们重新参与聊天调度。\n- 修复 Qoder 国内版每日签到，补齐活动服务要求的机器身份请求头。\n- 路由的区域锁定不再跨越大规模的账号池变化。新增或迁移大量其他区域的账号后，路由会重新落到账号最多的区域，而不会让新账号闲置。",
           "updated_at": "2026-10-01T18:58:44+08:00",
