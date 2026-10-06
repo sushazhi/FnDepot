@@ -274,6 +274,21 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "3.1.1": {
+          "changelog": "v3.1.1\n1.跟进上游 MoviePilot v3.1.1：构建 pin 与 manifest 版本同步更新，包名版本与上游 tag 一一对应\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.7 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-10-06T18:30:15+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.1/moviepilot-3.1.1-amd64.fpk",
+              "size": 272892106
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.1/moviepilot-3.1.1-arm64.fpk",
+              "size": 255511182
+            }
+          }
+        },
         "3.1.0": {
           "changelog": "v3.1.0\n1.跟进上游 MoviePilot v3.1.0\n2.新增重启时自动检查更新认证资源和站点资源",
           "updated_at": "2026-10-04T23:35:37+08:00",
@@ -316,21 +331,6 @@
             "arm": {
               "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v1.0.7/moviepilot-1.0.7-arm64.fpk",
               "size": 254013588
-            }
-          }
-        },
-        "1.0.6": {
-          "changelog": "v1.0.6\n1.同步上游MP v3.0.3",
-          "updated_at": "2026-09-16T23:56:50+08:00",
-          "os_min_version": "1.1.3104",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v1.0.6/moviepilot-1.0.6-amd64.fpk",
-              "size": 271355050
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v1.0.6/moviepilot-1.0.6-arm64.fpk",
-              "size": 254009520
             }
           }
         }
