@@ -362,6 +362,23 @@
       "is_docker": false,
       "service_port": "3065",
       "releases": {
+        "2.9.8-1": {
+          "changelog": "v2.9.8-1\n1.上游 agent2api v2.9.8 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-10-09T18:38:51+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.8-1/agent2api-2.9.8-1-amd64.fpk",
+              "size": 9306979,
+              "sha256": "99141d1a72634cb629e771569fb7c19fdf3af06de86ea343f3ce7b98cef909f2"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.8-1/agent2api-2.9.8-1-arm64.fpk",
+              "size": 8679458,
+              "sha256": "ebd6bd8b5d73b4ff3ea3130f23ee0f40166cd6439325c5269341721bbf84ba3d"
+            }
+          }
+        },
         "2.9.5-1": {
           "changelog": "v2.9.5-1\n1.上游 agent2api v2.9.5 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-10-07T21:12:33+08:00",
