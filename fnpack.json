@@ -274,6 +274,36 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "3.1.1": {
+          "changelog": "v3.1.1\n1.跟进上游 MoviePilot v3.1.1：构建 pin 与 manifest 版本同步更新，包名版本与上游 tag 一一对应\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.7 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-10-06T18:30:15+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.1/moviepilot-3.1.1-amd64.fpk",
+              "size": 272892106
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.1/moviepilot-3.1.1-arm64.fpk",
+              "size": 255511182
+            }
+          }
+        },
+        "3.1.0": {
+          "changelog": "v3.1.0\n1.跟进上游 MoviePilot v3.1.0\n2.新增重启时自动检查更新认证资源和站点资源",
+          "updated_at": "2026-10-04T23:35:37+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.0/moviepilot-3.1.0-amd64.fpk",
+              "size": 272860440
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.0/moviepilot-3.1.0-arm64.fpk",
+              "size": 255500956
+            }
+          }
+        },
         "3.0.10-1": {
           "changelog": "v3.0.10-1\n1.跟进上游 MoviePilot v3.0.10-1：构建 pin 与 manifest 版本同步更新，包名版本与上游 tag 一一对应\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.7 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-10-01T21:16:59+08:00",
@@ -301,21 +331,6 @@
             "arm": {
               "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v1.0.7/moviepilot-1.0.7-arm64.fpk",
               "size": 254013588
-            }
-          }
-        },
-        "1.0.6": {
-          "changelog": "v1.0.6\n1.同步上游MP v3.0.3",
-          "updated_at": "2026-09-16T23:56:50+08:00",
-          "os_min_version": "1.1.3104",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v1.0.6/moviepilot-1.0.6-amd64.fpk",
-              "size": 271355050
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v1.0.6/moviepilot-1.0.6-arm64.fpk",
-              "size": 254009520
             }
           }
         }
@@ -347,6 +362,23 @@
       "is_docker": false,
       "service_port": "3065",
       "releases": {
+        "2.9.5-1": {
+          "changelog": "v2.9.5-1\n1.上游 agent2api v2.9.5 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-10-07T21:12:33+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.5-1/agent2api-2.9.5-1-amd64.fpk",
+              "size": 9140971,
+              "sha256": "bb23e65c15135ba0cc672c0d0a53d9400a7bf76e3edec432884c8d5c01e501d8"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.5-1/agent2api-2.9.5-1-arm64.fpk",
+              "size": 8523066,
+              "sha256": "ef8cd313ba85f91c04327cae384e33662c018d7e5046c655fe9bfce19fb4e7af"
+            }
+          }
+        },
         "2.9.0-2": {
           "changelog": "v2.9.0-2\n修复「添加账号」里模型图标不显示：桌面入口 url 不带尾斜杠时，面板图标的裸相对路径会被解析到上一级；现注入 base 标签并修正桥接脚本的解析基准（不再产生双重前缀 404）\n新增构建期守卫：模型图标缺失不再静默，构建即失败",
           "updated_at": "2026-09-29T22:04:28+08:00",
@@ -410,6 +442,40 @@
       "is_docker": false,
       "service_port": "3010",
       "releases": {
+        "0.6.17-1": {
+          "changelog": "## cli2api 0.6.17-1（上游 v0.6.17）\n\nv0.6.17-1\n1.上游 cli2api 同步至 v0.6.17（零源码改动）\n2.概览页的资源占用卡片提前到账号池旁边，排在流量排行之前。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.6.17`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.6.17-1-amd64.fpk` | x86_64 |\n| `cli2api-0.6.17-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
+          "updated_at": "2026-10-07T20:45:25+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.17/cli2api-0.6.17-1-amd64.fpk",
+              "size": 82884948,
+              "sha256": "44f4f8802e3d8b3e369ddaaf40736d6ce849ea83d793ed328101f497db36c7ea"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.17/cli2api-0.6.17-1-arm64.fpk",
+              "size": 81265859,
+              "sha256": "0dccbd08125d5c27db44bd397cde21677e390545b3198f3a14bd36b3244a2ca9"
+            }
+          }
+        },
+        "0.6.15-1": {
+          "changelog": "## English\n\n- Run the Qoder CN check-in fingerprint from an executable directory when the account runtime directory cannot run programs.\n\n## 中文\n\n- 账号运行目录不能执行程序时，Qoder 国内版签到会改到可执行目录读取机器指纹。",
+          "updated_at": "2026-10-04T18:38:23+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.15/cli2api-0.6.15-1-amd64.fpk",
+              "size": 82861050,
+              "sha256": "2350925df7e5d8a9ab2b0a26226dd2082f764c68b3ff1d6b74e7231161e38d10"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.15/cli2api-0.6.15-1-arm64.fpk",
+              "size": 81238082,
+              "sha256": "41821c82dcf409469d7304e66f5a65ee8b1bb725fd5822483fa2dbf98453c0eb"
+            }
+          }
+        },
         "0.6.13-1": {
           "changelog": "## English\n\n- Add a system setting to let disabled accounts continue their opted-in automatic daily check-in without making them eligible for chat routing.\n- Fix Qoder CN daily check-in by sending the machine identity headers required by the campaign service.\n- A routing region latch no longer survives a large change in pool composition. Adding or migrating many accounts of another region now re-seats the route on the largest region instead of leaving the new accounts idle.\n\n## 中文\n\n- 新增系统设置，允许停用账号继续执行已开启的自动签到，同时不会让它们重新参与聊天调度。\n- 修复 Qoder 国内版每日签到，补齐活动服务要求的机器身份请求头。\n- 路由的区域锁定不再跨越大规模的账号池变化。新增或迁移大量其他区域的账号后，路由会重新落到账号最多的区域，而不会让新账号闲置。",
           "updated_at": "2026-10-01T18:58:44+08:00",
