@@ -216,12 +216,38 @@ def build_packages(app: dict, release: dict, owner: str, repo: str) -> dict:
 
 README_PATH = os.path.join(ROOT, "README.md")
 
-# README「应用一览」表格里的一行：| [名称](#锚点) | 说明 | 分类 | 架构 | 版本 |
+# README「应用一览」表格里的一行：| [名称](链接) | 说明 | 分类 | 架构 | 版本 |
 # 只匹配表格行（以 "| [" 开头、以 "|" 结尾）。prefix 覆盖到版本列之前的那个 "|"，
 # 版本列本身用 \s*[^|]*\| 吃掉，重写时只替换版本列，其余单元格原样保留。
+#
+# 链接可以是库内锚点（[名称](#21-飞牛日志管理logmanager)）也可以是应用仓库地址
+# （[名称](https://github.com/sushazhi/fnos-logmanager)）。两者都要能认出来，否则
+# 换成仓库链接后版本列就不再被刷新。匹配应用 key 时依次尝试：锚点以 key 结尾，
+# 或仓库 slug 以 "-<key>" 结尾（大小写不敏感，兼容 fnos-MoviePilot 这类仓库名）。
 README_ROW_RE = re.compile(
-    r"^(?P<prefix>\|\s*\[[^\]]*\]\(#(?P<anchor>[^)]+)\)\s*\|.*\|)\s*[^|]*\|\s*$"
+    r"^(?P<prefix>\|\s*\[[^\]]*\]\((?P<link>[^)]+)\)\s*\|.*\|)\s*[^|]*\|\s*$"
 )
+
+# 仓库形态的链接：https://github.com/<owner>/<repo>[/...]
+REPO_LINK_RE = re.compile(
+    r"^https?://(?:www\.)?github\.com/[^/\s]+/(?P<repo>[^/\s#?]+)", re.IGNORECASE
+)
+
+
+def app_key_from_readme_link(link: str, keys) -> str:
+    """从「应用一览」表格首列的链接里认出应用 key。认不出返回 None。"""
+    # 取最长匹配，避免某个 key 恰是另一个 key 后缀时误配。
+    ordered = sorted(keys, key=len, reverse=True)
+
+    repo_match = REPO_LINK_RE.match(link.strip())
+    if repo_match:
+        # 仓库名形如 fnos-logmanager -> logmanager；用 "-<key>" 做后缀匹配。
+        repo = repo_match.group("repo").lower()
+        return next((k for k in ordered if repo.endswith("-" + k.lower())), None)
+
+    # 锚点形如 "21-飞牛日志管理logmanager"，key 是 ASCII，按结尾匹配更稳。
+    anchor = link.lstrip("#")
+    return next((k for k in ordered if anchor.endswith(k)), None)
 
 
 def update_readme_versions(fnpack: dict) -> int:
@@ -248,11 +274,7 @@ def update_readme_versions(fnpack: dict) -> int:
         m = README_ROW_RE.match(line)
         if not m:
             continue
-        anchor = m.group("anchor")
-        # 用 app key 匹配锚点末尾（锚点里含中文，key 是 ASCII，匹配更稳）。
-        # 取最长匹配，避免某个 key 恰是另一个 key 后缀时误配。
-        hit = next((k for k in sorted(latest, key=len, reverse=True)
-                    if anchor.endswith(k)), None)
+        hit = app_key_from_readme_link(m.group("link"), latest)
         if not hit:
             continue
         ver = latest[hit]
