@@ -274,6 +274,21 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "3.1.3": {
+          "changelog": "v3.1.3\n1.跟进上游 MoviePilot v3.1.3：构建 pin 与 manifest 版本同步更新，包名版本与上游 tag 一一对应\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.7 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-10-10T20:53:49+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.3/moviepilot-3.1.3-amd64.fpk",
+              "size": 273217843
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.3/moviepilot-3.1.3-arm64.fpk",
+              "size": 255825311
+            }
+          }
+        },
         "3.1.1": {
           "changelog": "v3.1.1\n1.跟进上游 MoviePilot v3.1.1：构建 pin 与 manifest 版本同步更新，包名版本与上游 tag 一一对应\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.7 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-10-06T18:30:15+08:00",
@@ -316,21 +331,6 @@
             "arm": {
               "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.0.10-1/moviepilot-3.0.10-1-arm64.fpk",
               "size": 254998571
-            }
-          }
-        },
-        "1.0.7": {
-          "changelog": "v1.0.7\n1.修复自动更新永久失效：依赖清单里的平台专属包（pyobjc-*、pywin32 等）此前被当作 Linux 依赖去安装，必然失败并整体回滚；现在按 PEP 508 marker 过滤，并且“上游锁文件引用了尚未发布到镜像的版本”时只跳过该包继续更新（本机未装的仍会报错）\n2.修复应用内自更新后配置目录属主未收敛导致的 SQLite “attempt to write a readonly database”：升级成功后与安装/升级回调同一口径递归修正属主，避免写配置/写库时报只读\n3.修复日志每行重复两遍（更新器、安装、配置三处的重复重定向）\n4.内存优化：限制 malloc arena（实测 VmSize 2.7GB→0.77GB、RSS 约降 10~20%），并新增内存看门狗——后端持续超阈值时自动回收；阈值与开关可在 app.env 调整，x86_64 与 ARM 通用\n5.构建脚本依赖安装改走国内镜像，不再直连 pypi.org",
-          "updated_at": "2026-09-17T22:56:55+08:00",
-          "os_min_version": "1.1.3104",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v1.0.7/moviepilot-1.0.7-amd64.fpk",
-              "size": 271366094
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v1.0.7/moviepilot-1.0.7-arm64.fpk",
-              "size": 254013588
             }
           }
         }
