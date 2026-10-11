@@ -459,6 +459,23 @@
       "is_docker": false,
       "service_port": "3010",
       "releases": {
+        "0.6.20-1": {
+          "changelog": "## cli2api 0.6.20-1（上游 v0.6.20）\n\nv0.6.20-1\n1.上游 cli2api 同步至 v0.6.20（零源码改动）\n2.修复 Qoder 上游网关偶发 200 + 仅心跳帧时，网关静默返回\"空且不合规\"的补全。进程内直连客户端现在会在转发前拒绝空流（执行层可冷却该账号并切换到其他账号重试）；对已输出内容但在终态 finish_reason 前被切断的流，合成 stop / tool_calls 终态帧进行挽救；非流式空响应不再凭空合成 stop 而是报错。严格的 OpenAI 兼容客户端（如 pi coding agent）不再出现 Stream ended without finish_reason。\n3.让 Qoder 额度刷新失败在账号刷新接口中可见，同时保持账号就绪状态不受影响，并让额度与模型目录刷新相互独立执行。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.6.20`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.6.20-1-amd64.fpk` | x86_64 |\n| `cli2api-0.6.20-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
+          "updated_at": "2026-10-11T19:50:38+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.20/cli2api-0.6.20-1-amd64.fpk",
+              "size": 82932857,
+              "sha256": "93a2b631baa3b20b4ff00d33b72fe5758160aee23106f8af2b48fed77b4137b8"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.20/cli2api-0.6.20-1-arm64.fpk",
+              "size": 81305232,
+              "sha256": "cf79d9b0645078eacefa29a3eb34375277b3573da0169308e5d7c32befead7b4"
+            }
+          }
+        },
         "0.6.17-1": {
           "changelog": "## cli2api 0.6.17-1（上游 v0.6.17）\n\nv0.6.17-1\n1.上游 cli2api 同步至 v0.6.17（零源码改动）\n2.概览页的资源占用卡片提前到账号池旁边，排在流量排行之前。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.6.17`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.6.17-1-amd64.fpk` | x86_64 |\n| `cli2api-0.6.17-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
           "updated_at": "2026-10-07T20:45:25+08:00",
