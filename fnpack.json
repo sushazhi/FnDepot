@@ -362,6 +362,23 @@
       "is_docker": false,
       "service_port": "3065",
       "releases": {
+        "3.0.1-1": {
+          "changelog": "v3.0.1-1\n1.上游 agent2api v3.0.1 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-10-12T19:10:51+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.0.1-1/agent2api-3.0.1-1-amd64.fpk",
+              "size": 10203524,
+              "sha256": "d0437a3504cb2505641414e9777dee8bfec8c9f26b5422b00b758294e2524588"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.0.1-1/agent2api-3.0.1-1-arm64.fpk",
+              "size": 9557902,
+              "sha256": "8bd0801e97c006a7dc07c1f32916a8ac8748a1e2d091299692bb90b5f4c60623"
+            }
+          }
+        },
         "2.9.8-1": {
           "changelog": "v2.9.8-1\n1.上游 agent2api v2.9.8 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-10-09T18:38:51+08:00",
@@ -410,23 +427,6 @@
               "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.0-2/agent2api-2.9.0-2-arm64.fpk",
               "size": 8332547,
               "sha256": "7b92f9bd011a3da6b54b24d448643338927987e44e5ba547e80ba3b64de61bee"
-            }
-          }
-        },
-        "2.9.0-1": {
-          "changelog": "v2.9.0-1\n1.上游 agent2api v2.9.0 原样集成（零源码改动），外套飞牛网关适配层（fngateway）\n2.统一网关接入：面板走 /app/agent2api，仅管理员可访问；网关密钥由后端注入，面板免密登录\n3.下游独立端口 3065：标准 OpenAI 兼容接口，任意 OpenAI SDK 直连\n4.单文件静态二进制：不依赖 Docker、不依赖 Node.js 运行时，SQLite 静态链接\n5.内置 7 个提供商适配（WorkBuddy / 小浣熊 / CatPaw / AutoClaw / Qoder / Cline Free / Cline Pass）\n6.控制台自带更新入口在飞牛上不可用（无宿主机 updater），属预期降级",
-          "updated_at": "2026-09-29T21:11:27+08:00",
-          "os_min_version": "1.2.0401",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.0-1/agent2api-2.9.0-1-amd64.fpk",
-              "size": 8949791,
-              "sha256": "d98ff79a30cdea5b8f5956b21f81dcf0d3ec243f262299f975021fee4a194c03"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.0-1/agent2api-2.9.0-1-arm64.fpk",
-              "size": 8331753,
-              "sha256": "7dc8a1d2ed2a926c7557d15e16f1dd6022019f018b96281434955f6be7f524f3"
             }
           }
         }
