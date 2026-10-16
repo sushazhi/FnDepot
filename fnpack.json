@@ -362,6 +362,23 @@
       "is_docker": false,
       "service_port": "3065",
       "releases": {
+        "3.0.7-1": {
+          "changelog": "v3.0.7-1\n1.上游 agent2api v3.0.7 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-10-16T19:28:58+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.0.7-1/agent2api-3.0.7-1-amd64.fpk",
+              "size": 11479032,
+              "sha256": "79682b5680d1b37442f5f4fed847532bbef5493c8250f5a658bcc19efddb7444"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.0.7-1/agent2api-3.0.7-1-arm64.fpk",
+              "size": 10780670,
+              "sha256": "f478319b8deb74ba3396fe27e18b7af5aa4932b47039301733c97dc3ff2760a9"
+            }
+          }
+        },
         "3.0.5-1": {
           "changelog": "v3.0.5-1\n1.上游 agent2api v3.0.5 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-10-15T22:20:53+08:00",
@@ -410,23 +427,6 @@
               "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.8-1/agent2api-2.9.8-1-arm64.fpk",
               "size": 8679458,
               "sha256": "ebd6bd8b5d73b4ff3ea3130f23ee0f40166cd6439325c5269341721bbf84ba3d"
-            }
-          }
-        },
-        "2.9.5-1": {
-          "changelog": "v2.9.5-1\n1.上游 agent2api v2.9.5 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
-          "updated_at": "2026-10-07T21:12:33+08:00",
-          "os_min_version": "1.2.0401",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.5-1/agent2api-2.9.5-1-amd64.fpk",
-              "size": 9140971,
-              "sha256": "bb23e65c15135ba0cc672c0d0a53d9400a7bf76e3edec432884c8d5c01e501d8"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.5-1/agent2api-2.9.5-1-arm64.fpk",
-              "size": 8523066,
-              "sha256": "ef8cd313ba85f91c04327cae384e33662c018d7e5046c655fe9bfce19fb4e7af"
             }
           }
         }
