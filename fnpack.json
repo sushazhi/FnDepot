@@ -274,6 +274,21 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "3.1.6": {
+          "changelog": "v3.1.6\n1.上游 MoviePilot v3.1.6 更新内容——优化在线升级流程：主程序、配套前端和站点资源统一准备，全部就绪后只需重启一次；改进更新状态保留和移动端按钮布局；新增整理成功通知聚合开关，同批次文件整理完成后汇总通知，并支持自定义通知模板，减少逐文件刷屏；升级多渠道消息展示：按渠道能力呈现结构化通知，保留纯文本兼容；修复 Telegram 富消息降级、飞书流式卡片过期恢复及微信 ClawBot 媒体消息识别\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.8 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-10-17T17:51:30+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.6/moviepilot-3.1.6-amd64.fpk",
+              "size": 242248456
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.6/moviepilot-3.1.6-arm64.fpk",
+              "size": 233980203
+            }
+          }
+        },
         "3.1.5": {
           "changelog": "v3.1.5\n1.跟进上游 MoviePilot v3.1.5：构建 pin 与 manifest 版本同步更新，包名版本与上游 tag 一一对应\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.7 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-10-13T18:47:05+08:00",
@@ -316,21 +331,6 @@
             "arm": {
               "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.1/moviepilot-3.1.1-arm64.fpk",
               "size": 255511182
-            }
-          }
-        },
-        "3.1.0": {
-          "changelog": "v3.1.0\n1.跟进上游 MoviePilot v3.1.0\n2.新增重启时自动检查更新认证资源和站点资源",
-          "updated_at": "2026-10-04T23:35:37+08:00",
-          "os_min_version": "1.1.3104",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.0/moviepilot-3.1.0-amd64.fpk",
-              "size": 272860440
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.0/moviepilot-3.1.0-arm64.fpk",
-              "size": 255500956
             }
           }
         }
@@ -459,6 +459,23 @@
       "is_docker": false,
       "service_port": "3010",
       "releases": {
+        "0.6.22-1": {
+          "changelog": "## cli2api 0.6.22-1（上游 v0.6.22）\n\nv0.6.22-1\n1.上游 cli2api 同步至 v0.6.22（零源码改动）\n2.每个账号可以把自己的真实模型映射成对外名字，也可以限制自己只接选中的目录模型。\n3.额度耗尽的账号现在仍可路由到免费模型。Qoder 目录中部分模型单价为零（limited_time_free 标签或 price_factor 为零），请求不消耗积分，但路由池原先无条件排除所有额度耗尽的账号，导致这些账号的免费模型无账号可用。路由池现在在缓存模型列表的同时记录上游报价为零的模型，额度过滤对命中该名单的请求予以豁免。未报价的模型不视为免费；豁免按请求模型限定，额度耗尽的账号依旧不会出现在付费模型的路由上。\n4.Qoder 聊天请求现在发送目录里的网关模型键。模型目录同时给出一个易读的公网 ID（qwen3.8-flash）和一个不同的网关键（qfmodel）。Worker 发送前会用账号目录把公网 ID 解析一遍，但进程内 COSY 客户端此前直接把调用方传入的名字填进 model_config.key。在只按映射键路由的账号上，这个请求不会得到任何响应——网关把它挂着，客户端一直等到自己的超时，既没有错误也没有数据。路由池现在记录目录给出的「公网 ID → 网关键」映射，聊天请求携带映射后的键。目录未给出不同键的账号保持公网 ID 原样。\n5.修复 Qoder 多轮工具调用被上游以 400 InvalidParameter: messages with role \"tool\" must be a response to a preceeding message with \"tool_calls\" 拒绝的问题。上游网关只在前一条 assistant 消息的 content 为字符串时，才把它携带的 tool_calls 登记为可配对；OpenAI 客户端对纯工具调用轮次发送的正是 \"content\": null，导致调用未登记、后续 role:\"tool\" 消息被拒。进程内直连客户端现在会把工具调用轮次的 null content 改写为空字符串（网关接受该形状）；工具调用 id、工具结果与其他内容形状均原样保留。\n6.WorkBuddy 每日签到成功后立即清除对应账号的冷却，让恢复的积分可以马上参与调度。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.6.22`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.6.22-1-amd64.fpk` | x86_64 |\n| `cli2api-0.6.22-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
+          "updated_at": "2026-10-18T16:55:08+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.22/cli2api-0.6.22-1-amd64.fpk",
+              "size": 82950197,
+              "sha256": "818f4802764cbdf1e88e3993d3c2fe531c89f208448423ef2ab94764ad98e7db"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.22/cli2api-0.6.22-1-arm64.fpk",
+              "size": 81310172,
+              "sha256": "3cbe39d5ae12a371de60b4457cfc322d838dd4be489cdb87049f70f22708642a"
+            }
+          }
+        },
         "0.6.20-1": {
           "changelog": "## cli2api 0.6.20-1（上游 v0.6.20）\n\nv0.6.20-1\n1.上游 cli2api 同步至 v0.6.20（零源码改动）\n2.修复 Qoder 上游网关偶发 200 + 仅心跳帧时，网关静默返回\"空且不合规\"的补全。进程内直连客户端现在会在转发前拒绝空流（执行层可冷却该账号并切换到其他账号重试）；对已输出内容但在终态 finish_reason 前被切断的流，合成 stop / tool_calls 终态帧进行挽救；非流式空响应不再凭空合成 stop 而是报错。严格的 OpenAI 兼容客户端（如 pi coding agent）不再出现 Stream ended without finish_reason。\n3.让 Qoder 额度刷新失败在账号刷新接口中可见，同时保持账号就绪状态不受影响，并让额度与模型目录刷新相互独立执行。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.6.20`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.6.20-1-amd64.fpk` | x86_64 |\n| `cli2api-0.6.20-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
           "updated_at": "2026-10-11T19:50:38+08:00",
@@ -507,23 +524,6 @@
               "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.15/cli2api-0.6.15-1-arm64.fpk",
               "size": 81238082,
               "sha256": "41821c82dcf409469d7304e66f5a65ee8b1bb725fd5822483fa2dbf98453c0eb"
-            }
-          }
-        },
-        "0.6.13-1": {
-          "changelog": "## English\n\n- Add a system setting to let disabled accounts continue their opted-in automatic daily check-in without making them eligible for chat routing.\n- Fix Qoder CN daily check-in by sending the machine identity headers required by the campaign service.\n- A routing region latch no longer survives a large change in pool composition. Adding or migrating many accounts of another region now re-seats the route on the largest region instead of leaving the new accounts idle.\n\n## 中文\n\n- 新增系统设置，允许停用账号继续执行已开启的自动签到，同时不会让它们重新参与聊天调度。\n- 修复 Qoder 国内版每日签到，补齐活动服务要求的机器身份请求头。\n- 路由的区域锁定不再跨越大规模的账号池变化。新增或迁移大量其他区域的账号后，路由会重新落到账号最多的区域，而不会让新账号闲置。",
-          "updated_at": "2026-10-01T18:58:44+08:00",
-          "os_min_version": "1.2.0401",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.13/cli2api-0.6.13-1-amd64.fpk",
-              "size": 82841084,
-              "sha256": "9af2f574827dd7b2795d3d256cfed57e5c426a7355daf7003313cc7bd8bf01fe"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.13/cli2api-0.6.13-1-arm64.fpk",
-              "size": 81213121,
-              "sha256": "01daa07f2d28d99276cc404a20453995ea254665a059932bd5fcab7ce1a9e228"
             }
           }
         }
