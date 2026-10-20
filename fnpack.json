@@ -274,6 +274,21 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "3.1.8": {
+          "changelog": "v3.1.8\n1.上游 MoviePilot v3.1.8 更新内容——优化 Emby、Jellyfin、Plex、Navidrome 查询，按首页展示、媒体查重、入库同步等场景获取所需信息，减少不必要的查询与解析开销；修复自动整理音乐时未同步本地封面的问题，按本地音乐封面设置随音乐文件同步封面；修复 TXT、LRC、Lyricsfile 等歌词文件的权限，遵循部署的 UMASK 设置，避免不同用户运行的媒体服务器无法读取歌词",
+          "updated_at": "2026-10-20T16:41:11+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.8/moviepilot-3.1.8-amd64.fpk",
+              "size": 242653374
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.8/moviepilot-3.1.8-arm64.fpk",
+              "size": 234383171
+            }
+          }
+        },
         "3.1.6": {
           "changelog": "v3.1.6\n1.上游 MoviePilot v3.1.6 更新内容——优化在线升级流程：主程序、配套前端和站点资源统一准备，全部就绪后只需重启一次；改进更新状态保留和移动端按钮布局；新增整理成功通知聚合开关，同批次文件整理完成后汇总通知，并支持自定义通知模板，减少逐文件刷屏；升级多渠道消息展示：按渠道能力呈现结构化通知，保留纯文本兼容；修复 Telegram 富消息降级、飞书流式卡片过期恢复及微信 ClawBot 媒体消息识别\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.8 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-10-17T17:51:30+08:00",
@@ -318,21 +333,6 @@
               "size": 255825311
             }
           }
-        },
-        "3.1.1": {
-          "changelog": "v3.1.1\n1.跟进上游 MoviePilot v3.1.1：构建 pin 与 manifest 版本同步更新，包名版本与上游 tag 一一对应\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.7 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
-          "updated_at": "2026-10-06T18:30:15+08:00",
-          "os_min_version": "1.1.3104",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.1/moviepilot-3.1.1-amd64.fpk",
-              "size": 272892106
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.1/moviepilot-3.1.1-arm64.fpk",
-              "size": 255511182
-            }
-          }
         }
       },
       "preview_urls": [
@@ -362,6 +362,23 @@
       "is_docker": false,
       "service_port": "3065",
       "releases": {
+        "3.2.0-beta.2-1": {
+          "changelog": "v3.2.0-beta.2-1（预发布） \n1.跟随上游预发布 v3.2.0-beta.2\n\nSHA256 (amd64): 8ad692e3fc1b77888a4c9446222f651a054d2c8eb045dc5c74ce1be53fb4987a \nSHA256 (arm64): 7322fbc3907179e34284efe22ef847f47906ef9a120ebef74421c682041894c7",
+          "updated_at": "2026-10-20T20:33:34+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.2.0-beta.2-1/agent2api-3.2.0-beta.2-1-amd64.fpk",
+              "size": 12563435,
+              "sha256": "8ad692e3fc1b77888a4c9446222f651a054d2c8eb045dc5c74ce1be53fb4987a"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.2.0-beta.2-1/agent2api-3.2.0-beta.2-1-arm64.fpk",
+              "size": 11812003,
+              "sha256": "7322fbc3907179e34284efe22ef847f47906ef9a120ebef74421c682041894c7"
+            }
+          }
+        },
         "3.0.7-1": {
           "changelog": "v3.0.7-1\n1.上游 agent2api v3.0.7 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-10-16T19:28:58+08:00",
@@ -410,23 +427,6 @@
               "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.0.1-1/agent2api-3.0.1-1-arm64.fpk",
               "size": 9557902,
               "sha256": "8bd0801e97c006a7dc07c1f32916a8ac8748a1e2d091299692bb90b5f4c60623"
-            }
-          }
-        },
-        "2.9.8-1": {
-          "changelog": "v2.9.8-1\n1.上游 agent2api v2.9.8 原样集成（零源码改动），面板副本与上游 tag 逐字节一致\n2.重新编译 Linux 双架构二进制（amd64 / arm64），glibc 上限仍低于飞牛 fnOS 的 2.36\n3.本条目由 GitHub Actions 定时检查上游后自动生成",
-          "updated_at": "2026-10-09T18:38:51+08:00",
-          "os_min_version": "1.2.0401",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.8-1/agent2api-2.9.8-1-amd64.fpk",
-              "size": 9306979,
-              "sha256": "99141d1a72634cb629e771569fb7c19fdf3af06de86ea343f3ce7b98cef909f2"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v2.9.8-1/agent2api-2.9.8-1-arm64.fpk",
-              "size": 8679458,
-              "sha256": "ebd6bd8b5d73b4ff3ea3130f23ee0f40166cd6439325c5269341721bbf84ba3d"
             }
           }
         }
