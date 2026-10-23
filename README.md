@@ -25,7 +25,7 @@
 | [MoviePilot](https://github.com/sushazhi/fnos-MoviePilot) | NAS 媒体库自动化管理 | 影音娱乐 | `x86` / `arm` | 3.1.8 |
 | [Agent2API](https://github.com/sushazhi/fnos-agent2api) | 多提供商账号池 → OpenAI 兼容 API | AI赋能 / 编程开发 | `x86` / `arm` | 3.2.0-beta.2-1 |
 | [CLI2API](https://github.com/sushazhi/fnos-cli2api) | Qoder CLI → OpenAI 兼容 API | AI赋能 / 编程开发 | `x86` / `arm` | 0.6.22-1 |
-| [Mihomo](https://github.com/sushazhi/fnos-mihomo) | Clash.Meta 代理内核，带控制面板 | 系统工具 | `x86` / `arm` | 1.0.6 |
+| [Mihomo](https://github.com/sushazhi/fnos-mihomo) | Clash.Meta 代理内核，带控制面板 | 系统工具 | `x86` / `arm` | 1.19.33 |
 
 ---
 
