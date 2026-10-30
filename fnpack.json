@@ -543,6 +543,23 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "1.19.33.1": {
+          "changelog": "**Full Changelog**: https://github.com/sushazhi/fnos-mihomo/compare/v1.19.33...v1.19.33.1",
+          "updated_at": "2026-10-30T15:59:27+08:00",
+          "os_min_version": "1.1.3100",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-mihomo/releases/download/v1.19.33.1/mihomo-1.19.33.1-amd64.fpk",
+              "size": 33517933,
+              "sha256": "8b69e6a26352cc8ba591d997c1adb78f5173b8eb70936ccca37c81598bdad5c3"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-mihomo/releases/download/v1.19.33.1/mihomo-1.19.33.1-arm64.fpk",
+              "size": 31502735,
+              "sha256": "fa71a67ee3c0014d2f5d1d60ce1ee8923b0b0efe8ef84caeed454ff7d6a7dc65"
+            }
+          }
+        },
         "1.19.33": {
           "changelog": "**Full Changelog**: https://github.com/sushazhi/fnos-mihomo/compare/v1.0.6...v1.19.33",
           "updated_at": "2026-10-23T14:52:52+08:00",
