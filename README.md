@@ -21,9 +21,9 @@
 | --- | --- | --- | --- | --- |
 | [飞牛日志管理](https://github.com/sushazhi/fnos-logmanager) | 集中管理三方应用散落的日志文件 | 系统工具 | `all` | 0.8.1 |
 | [qBittorrent](https://github.com/sushazhi/fnos-qbittorrent) | 功能强大的 BitTorrent 下载工具 | 影音娱乐 | `x86` / `arm` | 5.3.0.1 |
-| [Transmission](https://github.com/sushazhi/fnos-transmission) | 轻量级 BitTorrent 下载工具 | 影音娱乐 | `x86` / `arm` | 4.1.4.0 |
+| [Transmission](https://github.com/sushazhi/fnos-transmission) | 轻量级 BitTorrent 下载工具 | 影音娱乐 | `x86` / `arm` | 4.1.4.1 |
 | [MoviePilot](https://github.com/sushazhi/fnos-MoviePilot) | NAS 媒体库自动化管理 | 影音娱乐 | `x86` / `arm` | 3.2.1 |
-| [Agent2API](https://github.com/sushazhi/fnos-agent2api) | 多提供商账号池 → OpenAI 兼容 API | AI赋能 / 编程开发 | `x86` / `arm` | 3.3.0-beta.4-1 |
+| [Agent2API](https://github.com/sushazhi/fnos-agent2api) | 多提供商账号池 → OpenAI 兼容 API | AI赋能 / 编程开发 | `x86` / `arm` | 3.3.0-beta.6-1 |
 | [CLI2API](https://github.com/sushazhi/fnos-cli2api) | Qoder CLI → OpenAI 兼容 API | AI赋能 / 编程开发 | `x86` / `arm` | 0.7.9-1 |
 | [Mihomo](https://github.com/sushazhi/fnos-mihomo) | Clash.Meta 代理内核，带控制面板 | 系统工具 | `x86` / `arm` | 1.19.33.1 |
 
