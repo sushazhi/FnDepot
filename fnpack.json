@@ -433,6 +433,23 @@
       "is_docker": false,
       "service_port": "3010",
       "releases": {
+        "0.7.26-1": {
+          "changelog": "## cli2api 0.7.26-1（上游 v0.7.26）\n\nv0.7.26-1\n1.上游 cli2api 同步至 v0.7.26（零源码改动）\n2.1. Codex 出站伪装 User-Agent 升至官方稳定版 0.166.0（rust-v0.166.0）；CPA pin 仍为 0.154。\n3.2. 登录页左侧改为实时进行中演示（节奏慢于 Overview），不再是静态标题；访问页聊天空状态、助手供应商标与复制控件与控制台其他位置一致。\n4.3. 新增实验性华为云码道 CodeArts 供应商：OAuth PKCE、OpenAI 兼容对话/SSE、模型目录（剔除不可用模型）、按目录声明的视觉与 reasoning、额度计量，以及每日/新用户积分签到。单账号端到端与双账号失败切换/会话粘性已验收；额度耗尽切换仍待验收。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.7.26`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.7.26-1-amd64.fpk` | x86_64 |\n| `cli2api-0.7.26-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
+          "updated_at": "2026-11-01T19:21:11+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.7.26/cli2api-0.7.26-1-amd64.fpk",
+              "size": 83517073,
+              "sha256": "19aff2afd246d00c13677aa18fe4fad02a19d57a1bac64efc9c8bd4dff0df706"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.7.26/cli2api-0.7.26-1-arm64.fpk",
+              "size": 81840059,
+              "sha256": "aa8ad822d4bdd32b92b5bdadff795fce91a05b7015b701988f920fe04c7bcd86"
+            }
+          }
+        },
         "0.7.9-1": {
           "changelog": "## cli2api 0.7.9-1（上游 v0.7.9）\n\nv0.7.9-1\n1.上游 cli2api 同步至 v0.7.9（零源码改动）\n2.请求日志保留可通过 CLI2API_LOG_RETENTION_DAYS（默认 7 天）与 CLI2API_LOG_MAX_ROWS（默认 20000 行）配置；非法值回退默认，避免误配关掉清理。基于外部贡献 [＃336](https://github.com/caigee-cmd/cli2api/pull/336)（[@YunMo-yanyu](https://github.com/YunMo-yanyu)）。\n3.在现有「用量」页增加 **费用** 选项卡：跨供应商订阅额度、DeepSeek 官方列表价折合费用（高峰/闲时）、费用趋势图、按模型明细与官方价格表。统计选项卡（按模型·账号·供应商的请求/延迟/token/额度）保持不变。价格目录补上 deepseek-flash。额度汇总沿用 ＃361 的 request_usage_details 回退，与统计页数字一致。基于外部贡献 [＃336](https://github.com/caigee-cmd/cli2api/pull/336)（[@YunMo-yanyu](https://github.com/YunMo-yanyu)）。\n4.WorkBuddy 流式请求在 WORKBUDDY_STREAM_TTFB_MS 内收不到首字节时会切换账号（对齐 Qoder 首字节超时），并保留原有 401 刷新 token 路径。基于外部贡献 [＃336](https://github.com/caigee-cmd/cli2api/pull/336)（[@YunMo-yanyu](https://github.com/YunMo-yanyu)）。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.7.9`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.7.9-1-amd64.fpk` | x86_64 |\n| `cli2api-0.7.9-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
           "updated_at": "2026-10-25T17:13:43+08:00",
@@ -481,23 +498,6 @@
               "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.20/cli2api-0.6.20-1-arm64.fpk",
               "size": 81305232,
               "sha256": "cf79d9b0645078eacefa29a3eb34375277b3573da0169308e5d7c32befead7b4"
-            }
-          }
-        },
-        "0.6.17-1": {
-          "changelog": "## cli2api 0.6.17-1（上游 v0.6.17）\n\nv0.6.17-1\n1.上游 cli2api 同步至 v0.6.17（零源码改动）\n2.概览页的资源占用卡片提前到账号池旁边，排在流量排行之前。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.6.17`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.6.17-1-amd64.fpk` | x86_64 |\n| `cli2api-0.6.17-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
-          "updated_at": "2026-10-07T20:45:25+08:00",
-          "os_min_version": "1.2.0401",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.17/cli2api-0.6.17-1-amd64.fpk",
-              "size": 82884948,
-              "sha256": "44f4f8802e3d8b3e369ddaaf40736d6ce849ea83d793ed328101f497db36c7ea"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.17/cli2api-0.6.17-1-arm64.fpk",
-              "size": 81265859,
-              "sha256": "0dccbd08125d5c27db44bd397cde21677e390545b3198f3a14bd36b3244a2ca9"
             }
           }
         }
