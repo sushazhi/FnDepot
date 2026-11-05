@@ -336,6 +336,23 @@
       "is_docker": false,
       "service_port": "3065",
       "releases": {
+        "3.4.2-1": {
+          "changelog": "v3.4.2-1\n1.上游 agent2api v3.4.2 原样集成（零源码改动），二进制与面板取自上游官方 Linux 服务端包\n2.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-11-05T19:08:29+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.4.2-1/agent2api-3.4.2-1-amd64.fpk",
+              "size": 17556542,
+              "sha256": "c646445c5039d6da13fb310dda8b70a58947304110339152223eff586d148bc1"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.4.2-1/agent2api-3.4.2-1-arm64.fpk",
+              "size": 16773297,
+              "sha256": "897f4a75288212ae78d2da4d2882ab0d104f64f350153b5145829efa23e7a578"
+            }
+          }
+        },
         "3.4.1-1": {
           "changelog": "v3.4.1-1\n1.上游 agent2api v3.4.1 原样集成（零源码改动），二进制与面板取自上游官方 Linux 服务端包\n2.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-11-04T19:31:47+08:00",
@@ -384,23 +401,6 @@
               "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.3.0-beta.4-1/agent2api-3.3.0-beta.4-1-arm64.fpk",
               "size": 12955546,
               "sha256": "0632f469f8542c095d22598a71b9e4104c4bdd839f62ee6c842c3606cb2a3591"
-            }
-          }
-        },
-        "3.2.0-beta.2-1": {
-          "changelog": "v3.2.0-beta.2-1（预发布） \n1.跟随上游预发布 v3.2.0-beta.2\n\nSHA256 (amd64): 8ad692e3fc1b77888a4c9446222f651a054d2c8eb045dc5c74ce1be53fb4987a \nSHA256 (arm64): 7322fbc3907179e34284efe22ef847f47906ef9a120ebef74421c682041894c7",
-          "updated_at": "2026-10-20T20:33:34+08:00",
-          "os_min_version": "1.2.0401",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.2.0-beta.2-1/agent2api-3.2.0-beta.2-1-amd64.fpk",
-              "size": 12563435,
-              "sha256": "8ad692e3fc1b77888a4c9446222f651a054d2c8eb045dc5c74ce1be53fb4987a"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.2.0-beta.2-1/agent2api-3.2.0-beta.2-1-arm64.fpk",
-              "size": 11812003,
-              "sha256": "7322fbc3907179e34284efe22ef847f47906ef9a120ebef74421c682041894c7"
             }
           }
         }
