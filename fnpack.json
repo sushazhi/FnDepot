@@ -433,6 +433,23 @@
       "is_docker": false,
       "service_port": "3010",
       "releases": {
+        "0.7.27-1": {
+          "changelog": "## cli2api 0.7.27-1（上游 v0.7.27）\n\nv0.7.27-1\n1.上游 cli2api 同步至 v0.7.27（零源码改动）\n2.账号批量导入确认弹窗加宽（md / 约 32rem），内边距略增，提供商卡片、区域切换与操作按钮不再显得挤。\n3.码道（CodeArts）控制台「导入凭证」恢复正常：适配器按控制台查找的位置暴露导入器，粘贴 codearts-oauth-v1 凭证不再返回 unsupported_format。\n4.码道（CodeArts）聊天在签名之后补发 WorkBuddy tip 28527f4 / hub ＃723 会话头：账号级稳定的 x-ot-session-id 与 user-session-id，以及每请求新的 x-ot-trace-id（不进入 SignedHeaders），避免华为云把每次请求都当成新建并发会话。\n5.Codex 模型目录新增上游客户端 / CLIProxyAPI 列表中的 gpt-6.1-terra（GPT-6.1 Terra），字段结构与同代 gpt-6.1-sol 一致。\n6.请求日志清理不再在 request_attempts、request_usage_details、request_stream_diagnostics 里留下孤儿行：清理改为在同一事务里显式删除子表行，不再依赖 ON DELETE CASCADE——该级联在任何未设置 PRAGMA foreign_keys 的连接上都不生效。\n7.PRAGMA foreign_keys 改为写进 SQLite DSN，连接池新开的每条连接都遵守已声明的级联，而不只是启动时执行过 Exec 的那一条。\n8.用量页「费用」选项卡的时间范围跟随 CLI2API_LOG_RETENTION_DAYS，不再写死 7 天；调大保留期后能看到更早的费用历史。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.7.27`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.7.27-1-amd64.fpk` | x86_64 |\n| `cli2api-0.7.27-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
+          "updated_at": "2026-11-08T19:21:40+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.7.27/cli2api-0.7.27-1-amd64.fpk",
+              "size": 83520562,
+              "sha256": "13955186b49ad9fdf70ad9273b79b66f9ba46bcf29c633bf7ca1de8a421c53bd"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.7.27/cli2api-0.7.27-1-arm64.fpk",
+              "size": 81844343,
+              "sha256": "16d03f360278fd6b68b53ac2e55575dd6d6b8d036031f07040d539604a07e3cf"
+            }
+          }
+        },
         "0.7.26-1": {
           "changelog": "## cli2api 0.7.26-1（上游 v0.7.26）\n\nv0.7.26-1\n1.上游 cli2api 同步至 v0.7.26（零源码改动）\n2.1. Codex 出站伪装 User-Agent 升至官方稳定版 0.166.0（rust-v0.166.0）；CPA pin 仍为 0.154。\n3.2. 登录页左侧改为实时进行中演示（节奏慢于 Overview），不再是静态标题；访问页聊天空状态、助手供应商标与复制控件与控制台其他位置一致。\n4.3. 新增实验性华为云码道 CodeArts 供应商：OAuth PKCE、OpenAI 兼容对话/SSE、模型目录（剔除不可用模型）、按目录声明的视觉与 reasoning、额度计量，以及每日/新用户积分签到。单账号端到端与双账号失败切换/会话粘性已验收；额度耗尽切换仍待验收。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.7.26`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.7.26-1-amd64.fpk` | x86_64 |\n| `cli2api-0.7.26-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
           "updated_at": "2026-11-01T19:21:11+08:00",
@@ -481,23 +498,6 @@
               "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.22/cli2api-0.6.22-1-arm64.fpk",
               "size": 81310172,
               "sha256": "3cbe39d5ae12a371de60b4457cfc322d838dd4be489cdb87049f70f22708642a"
-            }
-          }
-        },
-        "0.6.20-1": {
-          "changelog": "## cli2api 0.6.20-1（上游 v0.6.20）\n\nv0.6.20-1\n1.上游 cli2api 同步至 v0.6.20（零源码改动）\n2.修复 Qoder 上游网关偶发 200 + 仅心跳帧时，网关静默返回\"空且不合规\"的补全。进程内直连客户端现在会在转发前拒绝空流（执行层可冷却该账号并切换到其他账号重试）；对已输出内容但在终态 finish_reason 前被切断的流，合成 stop / tool_calls 终态帧进行挽救；非流式空响应不再凭空合成 stop 而是报错。严格的 OpenAI 兼容客户端（如 pi coding agent）不再出现 Stream ended without finish_reason。\n3.让 Qoder 额度刷新失败在账号刷新接口中可见，同时保持账号就绪状态不受影响，并让额度与模型目录刷新相互独立执行。\n\n---\n\n上游仓库：[`caigee-cmd/cli2api`](https://github.com/caigee-cmd/cli2api)（锁定 `v0.6.20`）\n\n| 文件 | 说明 |\n| --- | --- |\n| `cli2api-0.6.20-1-amd64.fpk` | x86_64 |\n| `cli2api-0.6.20-1-arm64.fpk` | ARM64 |\n| `SHA256SUMS.txt` | 校验和 |",
-          "updated_at": "2026-10-11T19:50:38+08:00",
-          "os_min_version": "1.2.0401",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.20/cli2api-0.6.20-1-amd64.fpk",
-              "size": 82932857,
-              "sha256": "93a2b631baa3b20b4ff00d33b72fe5758160aee23106f8af2b48fed77b4137b8"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-cli2api/releases/download/v0.6.20/cli2api-0.6.20-1-arm64.fpk",
-              "size": 81305232,
-              "sha256": "cf79d9b0645078eacefa29a3eb34375277b3573da0169308e5d7c32befead7b4"
             }
           }
         }
