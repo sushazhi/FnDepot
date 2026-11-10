@@ -248,6 +248,21 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "3.2.5": {
+          "changelog": "v3.2.5\n1.上游 MoviePilot v3.2.5 更新内容——以下汇总主项目 v3.2.4 发布后（北京时间 2026 年 11 月 4 日 07:54 起）的前后端及 App 变化；iOS App 采用独立版本号，目前为 v1.2.1；下载与订阅：保留合集中的真实集号，修复缺集被误记为已下载、订阅提前完成的问题；Transmission 临时通信故障支持自动重连重试；整理与网盘：完善远程存储覆盖整理时的临时文件命名，修复 115 等存储的重命名兼容问题",
+          "updated_at": "2026-11-09T20:58:43+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.2.5/moviepilot-3.2.5-amd64.fpk",
+              "size": 243231473
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.2.5/moviepilot-3.2.5-arm64.fpk",
+              "size": 235007110
+            }
+          }
+        },
         "3.2.3": {
           "changelog": "v3.2.3\n1.上游 MoviePilot v3.2.3 更新内容——修复自定义剧集组的缺失季集计算，按所选剧集组重新识别；恢复订阅的严格媒体身份匹配，减少同名内容误匹配；搜索与下载共享站点流控，保留频控错误原因，减少无效重试；完善缺少元数据时的整理任务处理与结果结算，修复 Agent 定时任务的执行账号归属",
           "updated_at": "2026-11-03T19:00:47+08:00",
@@ -290,21 +305,6 @@
             "arm": {
               "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.8/moviepilot-3.1.8-arm64.fpk",
               "size": 234383171
-            }
-          }
-        },
-        "3.1.6": {
-          "changelog": "v3.1.6\n1.上游 MoviePilot v3.1.6 更新内容——优化在线升级流程：主程序、配套前端和站点资源统一准备，全部就绪后只需重启一次；改进更新状态保留和移动端按钮布局；新增整理成功通知聚合开关，同批次文件整理完成后汇总通知，并支持自定义通知模板，减少逐文件刷屏；升级多渠道消息展示：按渠道能力呈现结构化通知，保留纯文本兼容；修复 Telegram 富消息降级、飞书流式卡片过期恢复及微信 ClawBot 媒体消息识别\n2.上游源码零改动原样集成，仅做 fnOS 打包适配（生命周期脚本、统一网关、桌面入口）\n3.自带 CPython 3.14.8 运行时与全部依赖，安装时无需联网\n4.本条目由 GitHub Actions 定时检查上游后自动生成",
-          "updated_at": "2026-10-17T17:51:30+08:00",
-          "os_min_version": "1.1.3104",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.6/moviepilot-3.1.6-amd64.fpk",
-              "size": 242248456
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.1.6/moviepilot-3.1.6-arm64.fpk",
-              "size": 233980203
             }
           }
         }
