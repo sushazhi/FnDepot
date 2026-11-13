@@ -528,6 +528,23 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "1.19.34": {
+          "changelog": "**Full Changelog**: https://github.com/sushazhi/fnos-mihomo/compare/v1.19.33.2...v1.19.34",
+          "updated_at": "2026-11-13T17:00:27+08:00",
+          "os_min_version": "1.1.3100",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-mihomo/releases/download/v1.19.34/mihomo-1.19.34-amd64.fpk",
+              "size": 33397621,
+              "sha256": "1437b92012d61ce1384edd840e2522472a8f6b5df4acdec15f488fef9481d143"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-mihomo/releases/download/v1.19.34/mihomo-1.19.34-arm64.fpk",
+              "size": 31369757,
+              "sha256": "c8e3de30a44089bfe7c73f5a0ad4a6cd45680534cd52d2198232c73e5aa0c68b"
+            }
+          }
+        },
         "1.19.33.2": {
           "changelog": "**Full Changelog**: https://github.com/sushazhi/fnos-mihomo/compare/v1.19.33.1...v1.19.33.2",
           "updated_at": "2026-11-06T16:53:05+08:00",
@@ -576,23 +593,6 @@
               "download_url": "https://github.com/sushazhi/fnos-mihomo/releases/download/v1.19.33/mihomo-1.19.33-arm64.fpk",
               "size": 31476829,
               "sha256": "7fccb0222b60f1702be2143f7db6ce9682b3b9351608a68412699625a044d03b"
-            }
-          }
-        },
-        "1.0.6": {
-          "changelog": "**Full Changelog**: https://github.com/sushazhi/fnos-mihomo/commits/v1.0.6",
-          "updated_at": "2026-10-04T00:08:10+08:00",
-          "os_min_version": "1.1.3100",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-mihomo/releases/download/v1.0.6/mihomo-1.0.6-amd64.fpk",
-              "size": 33434256,
-              "sha256": "460f952f2cda355ee891da013805dc9302b0d36f118f350e4ff833e500627136"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-mihomo/releases/download/v1.0.6/mihomo-1.0.6-arm64.fpk",
-              "size": 31419769,
-              "sha256": "14a70c37dcefea64f7887a23888d78619707bd2ba994ce4bf4c9961d3e697f87"
             }
           }
         }
