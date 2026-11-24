@@ -336,6 +336,23 @@
       "is_docker": false,
       "service_port": "3065",
       "releases": {
+        "3.5.0-1": {
+          "changelog": "v3.5.0-1\n1.上游 agent2api v3.5.0 原样集成（零源码改动），二进制与面板取自上游官方 Linux 服务端包\n2.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-11-23T21:06:36+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.5.0-1/agent2api-3.5.0-1-amd64.fpk",
+              "size": 25424351,
+              "sha256": "2970137f424f313db03c0405a079730e9dfc75b47971a27a5da7afe1bab916cf"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.5.0-1/agent2api-3.5.0-1-arm64.fpk",
+              "size": 23822208,
+              "sha256": "e99a34b38e77c7d737be530c77bcbefc3d017ea919c2af172446abd39266d274"
+            }
+          }
+        },
         "3.4.2-1": {
           "changelog": "v3.4.2-1\n1.上游 agent2api v3.4.2 原样集成（零源码改动），二进制与面板取自上游官方 Linux 服务端包\n2.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-11-05T19:08:29+08:00",
@@ -384,23 +401,6 @@
               "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.3.0-beta.6-1/agent2api-3.3.0-beta.6-1-arm64.fpk",
               "size": 13548953,
               "sha256": "b295e6c0faaa3bfa709a1136ede2afc8d242b70558fbc62a19a3e64405f3f0e6"
-            }
-          }
-        },
-        "3.3.0-beta.4-1": {
-          "changelog": "v3.3.0-beta.4-1（预发布）\n1.pin 跟到上游最新预览 v3.3.0-beta.4（2026-10-26 发布，上一个 pin 为 v3.3.0-beta.3）；上游最新正式版仍是 v3.0.8\n2.官方 Linux 服务端包两架构重新钉住并三方核对（本地实算 = 上游 .sha256 资产 = GitHub API digest）：amd64 10,414,609 B、arm64 10,038,256 B；包内二进制 amd64 15,478,576 B、arm64 14,049,112 B（beta.3 为 13,140,208 / 11,951,592），ELF 架构正确，最高 GLIBC 仍 2.34（飞牛上限 2.36）\n3.面板 218 个文件（相对 beta.3 新增 7 / 删除 2 / 修改 109）：新增 css/page-routing.css、css/page-routing-trace.css 与 5 种语言的 i18n/*/routing.js；删除 titlebar.js、tooltip.js（上游改用组件库）；补丁后树哈希 bf07ea4a…，两架构逐字节一致\n4.上游主要变化：新增 OpenAI Images 接口（图片生成与参考图编辑，复用网关鉴权、模型绑定、账号重试与记账）；「路由」页按模型展示参与范围并支持拖动排序、请求跟踪回放一次真实选路、会话粘滞管理、账号导出为 JSON、请求指纹脱敏；更新通道拆成正式版与 beta 版两个独立开关\n5.适配层复核：全部守卫在 beta.4 面板上通过 —— 资源引用仍是裸相对（根绝对路径 0 个，index.html 引用 51 降到 50）、i18n 五语各 20 个词典域齐全、44 个提供商图标全部仍被引用、SW scope 仍只命中 1 处并改成 ./（子路径下可注册）；网关改写面结论仍是「无需改动」\n6.网关按 CI 同口径重编（-X main.version=3.3.0-beta.4-1，Go 1.27.3，CGO_ENABLED=0）：修掉 .local-build/bin 里原是 -Version 3.1.0-2 编出的陈旧缓存 —— 代码虽未变，但启动日志与 --version 会报旧版本号\n7.已知问题（非阻断，沿用上一版）：面板「退出登录」仍是三目写法 window.location.href = e ? \"login.html\" : \"/login\"，网关的导航改写正则要求 = 后紧跟字面量而匹配不到，经子路径部署时会跳到站点根而非应用内登录页\n8.预发布版建议先在测试机上验证再升级",
-          "updated_at": "2026-10-26T22:23:25+08:00",
-          "os_min_version": "1.2.0401",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.3.0-beta.4-1/agent2api-3.3.0-beta.4-1-amd64.fpk",
-              "size": 13659132,
-              "sha256": "a5d3a17390988896f147ee34aa6bc814b8ea47790d341935133741d6874c23e4"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.3.0-beta.4-1/agent2api-3.3.0-beta.4-1-arm64.fpk",
-              "size": 12955546,
-              "sha256": "0632f469f8542c095d22598a71b9e4104c4bdd839f62ee6c842c3606cb2a3591"
             }
           }
         }
