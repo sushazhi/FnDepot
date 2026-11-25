@@ -248,6 +248,21 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "3.2.12": {
+          "changelog": "v3.2.12\n1.上游 MoviePilot v3.2.12 更新内容——**下载与订阅**：优化下载器繁忙响应慢时的任务确认机制，避免订阅重复下载同一资源或丢失下载记录；手动与交互下载支持自动转换为 TMDB 媒体信息；修复设置了“开始集数”的剧集在订…；**识别与整理**：订阅及测试的自定义识别词支持用 `@global` 引入全局规则；名称识别测试支持预览最终重命名与目标目录；修复 `[B7858E21]` 等校验码误判集数、片…；**音乐刮削整理**：「系统设置…",
+          "updated_at": "2026-11-24T21:54:12+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.2.12/moviepilot-3.2.12-amd64.fpk",
+              "size": 244043026
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.2.12/moviepilot-3.2.12-arm64.fpk",
+              "size": 235798261
+            }
+          }
+        },
         "3.2.7": {
           "changelog": "v3.2.7\n1.上游 MoviePilot v3.2.7 更新内容——以下汇总主项目 v3.2.6 首次发布后（北京时间 2026 年 11 月 12 日 14:13 起）的前后端及 App 变化；iOS App 使用独立版本号，本次涉及 v1.2.…；通知与渠道授权：在用户管理中统一处理机器人使用申请、审批、权限及停用，支持关联已有网页账号，并迁移原有渠道白名单；修复微信、Slack、VoceChat、Synology Chat…；媒体识别与分类：共享并缓存非 T…",
           "updated_at": "2026-11-17T20:02:57+08:00",
@@ -292,21 +307,6 @@
               "size": 234917262
             }
           }
-        },
-        "3.2.1": {
-          "changelog": "v3.2.1\n1.上游 MoviePilot v3.2.1 更新内容——优化媒体卡片与详情页加载：合并入库、订阅状态查询，共享配置读取，减少重复请求；推荐轮询避免请求重叠，并在后台暂停；优化日历、站点和资源列表加载：优先查询可见日期，限制单次加载规模，完善旧版本兼容与失败重试；完善外观与交互体验：新增玻璃特效开关，修正主题预览、默认外观恢复和多语言显示，优化插件搜索、文件列表与弹窗布局，修复下载器拖拽崩溃",
-          "updated_at": "2026-10-27T17:08:41+08:00",
-          "os_min_version": "1.1.3104",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.2.1/moviepilot-3.2.1-amd64.fpk",
-              "size": 243123950
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-MoviePilot/releases/download/v3.2.1/moviepilot-3.2.1-arm64.fpk",
-              "size": 234894933
-            }
-          }
         }
       },
       "preview_urls": [
@@ -336,6 +336,23 @@
       "is_docker": false,
       "service_port": "3065",
       "releases": {
+        "3.5.1-1": {
+          "changelog": "v3.5.1-1\n1.上游 agent2api v3.5.1 原样集成（零源码改动），二进制与面板取自上游官方 Linux 服务端包\n2.本条目由 GitHub Actions 定时检查上游后自动生成",
+          "updated_at": "2026-11-24T20:14:52+08:00",
+          "os_min_version": "1.2.0401",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.5.1-1/agent2api-3.5.1-1-amd64.fpk",
+              "size": 25521094,
+              "sha256": "24a2d3e20cb86f6c40d743c1241c95529f2580f4c9089f3f78bb4e8cf84eb15f"
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.5.1-1/agent2api-3.5.1-1-arm64.fpk",
+              "size": 23916804,
+              "sha256": "ce5de654154f389fd34826d59c58607d2acbe4a13c4a9c5a0f75c3311aa0c80b"
+            }
+          }
+        },
         "3.5.0-1": {
           "changelog": "v3.5.0-1\n1.上游 agent2api v3.5.0 原样集成（零源码改动），二进制与面板取自上游官方 Linux 服务端包\n2.本条目由 GitHub Actions 定时检查上游后自动生成",
           "updated_at": "2026-11-23T21:06:36+08:00",
@@ -384,23 +401,6 @@
               "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.4.1-1/agent2api-3.4.1-1-arm64.fpk",
               "size": 16272346,
               "sha256": "4be7fb75f95c7ebb83207d5bc5f259cd477ee580e4524572fdd80e728547297a"
-            }
-          }
-        },
-        "3.3.0-beta.6-1": {
-          "changelog": "v3.3.0-beta.6-1\n1.上游 agent2api v3.3.0-beta.6 原样集成（零源码改动）\n2.本条目由 GitHub Actions 定时检查上游后自动生成",
-          "updated_at": "2026-10-31T17:47:03+08:00",
-          "os_min_version": "1.2.0401",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.3.0-beta.6-1/agent2api-3.3.0-beta.6-1-amd64.fpk",
-              "size": 14278482,
-              "sha256": "9b8aa9aada3612922e5ba91f13e2e44bd525a3efe2cfb732267f5a0e93c3a1fc"
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-agent2api/releases/download/v3.3.0-beta.6-1/agent2api-3.3.0-beta.6-1-arm64.fpk",
-              "size": 13548953,
-              "sha256": "b295e6c0faaa3bfa709a1136ede2afc8d242b70558fbc62a19a3e64405f3f0e6"
             }
           }
         }
