@@ -102,6 +102,21 @@
       "is_docker": false,
       "service_port": "",
       "releases": {
+        "5.3.1.0": {
+          "changelog": "v5.3.1.0\n1. 同步上游版本qbittorrent 5.3.1 libtorrent 2.1.3",
+          "updated_at": "2026-11-25T18:55:11+08:00",
+          "os_min_version": "1.1.3104",
+          "packages": {
+            "x86": {
+              "download_url": "https://github.com/sushazhi/fnos-qbittorrent/releases/download/v5.3.1.0/qbittorrent-5.3.1.0-amd64.fpk",
+              "size": 42166965
+            },
+            "arm": {
+              "download_url": "https://github.com/sushazhi/fnos-qbittorrent/releases/download/v5.3.1.0/qbittorrent-5.3.1.0-arm64.fpk",
+              "size": 41883300
+            }
+          }
+        },
         "5.3.0.1": {
           "changelog": "v5.3.0.1\n1. 修复启动后 1 秒自动退出、误报“端口被占用”（残留实例锁与异常目录权限）\n2. 修复 MCP 服务鉴权失效（AI 客户端一律 401）与复制 API Key 为空",
           "updated_at": "2026-10-29T20:25:06+08:00",
@@ -144,21 +159,6 @@
             "arm": {
               "download_url": "https://github.com/sushazhi/fnos-qbittorrent/releases/download/v5.2.4.0/qbittorrent-5.2.4.0-arm64.fpk",
               "size": 39608636
-            }
-          }
-        },
-        "5.2.3.2": {
-          "changelog": "v5.2.3.2\n1. 新增 MCP 服务：AI 客户端可通过 MCP 协议直接管理下载任务\n2. 标题栏新增 MCP 设置面板：开关、端口、API Key 复制与重新生成\n3. 高危操作默认禁用（删除/停止/开始任务），面板可开启\n4. 新增通用 API 透传，完整接入 qBittorrent WebUI API\n5. WebUI 监听地址改为 0.0.0.0，支持局域网直接访问 WebUI / WebUI API\n6. 修复复制 Web API Key 时报 toast.copy.error 的问题",
-          "updated_at": "2026-09-07T21:57:49+08:00",
-          "os_min_version": "1.1.3104",
-          "packages": {
-            "x86": {
-              "download_url": "https://github.com/sushazhi/fnos-qbittorrent/releases/download/v5.2.3.2/qbittorrent-5.2.3.2-amd64.fpk",
-              "size": 39667655
-            },
-            "arm": {
-              "download_url": "https://github.com/sushazhi/fnos-qbittorrent/releases/download/v5.2.3.2/qbittorrent-5.2.3.2-arm64.fpk",
-              "size": 39541220
             }
           }
         }
